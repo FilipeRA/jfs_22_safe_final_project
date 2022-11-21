@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.List;
+
 @Document("users")
 public class User {
     @Id
@@ -13,7 +15,16 @@ public class User {
     private String userName;
     private String userEmail;
     private String userAddress;
-    private String[]
+    private int userRating;
+    private List<UserHistory> userHistory;
     private boolean profileExists;
 
 }
+
+
+
+//History
+//        Professional ID
+//        Name
+//        Service
+//        TotalPrice
