@@ -13,10 +13,6 @@ export default function Home() {
       <main className={styles.main}>
         Landing page
       </main>
-
-      <footer className={styles.footer}>
-        Blah blah
-      </footer>
     </div>
   );
 }

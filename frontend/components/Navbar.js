@@ -10,6 +10,7 @@ const Navbar = () => {
   const [service, setService] = useState('');
   const [location, setLocation] = useState('');
   const services = [];
+  const router = useRouter();
 
   useEffect(() => {
     setLoading(true);
@@ -39,25 +40,20 @@ const Navbar = () => {
     setService(e.target.value);
   };
 
-  const router = useRouter();
-
   const handleSubmit = e => {
     e.preventDefault();
 
     setService('');
     setLocation('');
-    console.log(e);
     router.push(`/gallery?location=${location}&service=${service}`);
   };
 
-  console.log('This is service: ', service);
-  console.log('This is location: ', location);
-
   return (
     <nav>
+
       <div className="logo">
-        <Link className="logo" href="/">
-          {/* <Image href="/" src="/logo.png" width={240} height={56} alt="logo" /> */}
+        <Link href="/">
+          <Image href="/" src="/favicon.ico" width={40} height={40} alt="logo" />
         </Link>
       </div>
 
@@ -86,7 +82,12 @@ const Navbar = () => {
           Search
         </button>
       </form>
-      <Link href="/">Home</Link>
+
+      <div className="nav--links">
+        <Link href="/">Home</Link>
+        <Link href="/login">Login</Link>
+      </div>
+
     </nav>
   );
 };

@@ -6,17 +6,19 @@ import Geocode from 'react-geocode';
 import styles from '../styles/Gallery.module.css';
 
 const Coordinates = async address => {
-  Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+  // Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+  Geocode.setApiKey('AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E');
 
   const geoLocations = await Geocode.fromAddress(address)
     .then(res => res.results[0].geometry.location)
+    // eslint-disable-next-line no-console
     .catch(error => console.error(error));
   return geoLocations;
 };
 
-const Map = ({ professionals }) => {
+const Map = ({ professionals, inputLocation }) => {
   const [coords, setCoords] = useState([]);
-  console.log(professionals);
+  const [centerCoords, setCenterCoords] = useState([]);
 
   useEffect(
     () => {
@@ -33,11 +35,23 @@ const Map = ({ professionals }) => {
     [professionals],
   );
 
+  useEffect(
+    () => {
+      if (inputLocation) {
+        Promise.all([Coordinates(inputLocation)]).then(location => {
+          setCenterCoords(location);
+        });
+      }
+    },
+    [inputLocation, professionals],
+  );
+
   return (
     <GoogleMap
-      zoom={12}
-      center={{ lat: 59.334591, lng: 18.06324 }}
+      zoom={13}
+      center={centerCoords[0]}
       mapContainerClassName={styles.mapContainer}>
+      <MarkerF position={centerCoords[0]} icon="/youAreHere.png" />
       {coords.map((coord, i) => (
         <MarkerF
           key={professionals[i].id}

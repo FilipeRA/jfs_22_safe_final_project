@@ -19,19 +19,43 @@ a {
   margin: 0 20px;
 } */
 
-nav {
+/* nav {
   margin: 10px auto 80px;
   padding: 10px 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   border-bottom: 1px solid #ddd;
+} */
+
+/* nav a {
+  margin-left: 12px;
+} */
+
+/* nav .logo {
+  margin-right: auto;
+} */
+
+nav {
+  margin: 10px auto 80px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
 }
-nav a {
+
+nav .logo {
   margin-left: 12px;
 }
-nav .logo {
-  margin-right: auto;
+
+nav .search {
+  background-color: pink;
+  display: flex;
+}
+
+nav .nav--links a {
+  margin-right: 12px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,8 +67,3 @@ nav .logo {
     background: black;
   }
 }
-
-
-
-
-

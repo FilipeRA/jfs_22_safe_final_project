@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoadScript } from '@react-google-maps/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Map from '../../components/Map';
 import styles from '../../styles/Gallery.module.css';
 
@@ -15,21 +16,19 @@ export const getStaticProps = async () => {
 };
 
 const Index = ({ professionals }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: 'AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E',
   });
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const router = useRouter();
   const data = router.query;
-  console.log(data);
+  const inputLocation = data.location;
 
   const filterPro = professionals.filter(pro => pro.professionalService.includes(data.service));
-  console.log(filterPro);
 
   return (
     <section className={styles.galleryContainer}>
@@ -38,12 +37,20 @@ const Index = ({ professionals }) => {
           <Link href={`/gallery/${pro.id}`} key={pro.id} className={styles.pro}>
             <h2>Image</h2>
             <h2>{pro.professionalName}</h2>
-            <p>{pro.professionalRating}</p>
-            <p>{pro.professionalPrice}</p>
+            <p>
+              <Image src="/star.png" width={20} height={20} alt="star rating" />
+              {' '}
+              {pro.professionalRating}
+            </p>
+            <p>
+              {pro.professionalPrice}
+              {' '}
+              kr
+            </p>
           </Link>
         ))}
       </div>
-      <Map professionals={filterPro} />
+      <Map professionals={filterPro} inputLocation={inputLocation} />
     </section>
   );
 };
