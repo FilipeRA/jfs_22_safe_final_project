@@ -18,8 +18,8 @@ export const getStaticProps = async () => {
 const Index = ({ professionals }) => {
   const router = useRouter();
   const { isLoaded } = useLoadScript({
-    // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    googleMapsApiKey: 'AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    // googleMapsApiKey: 'AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E',
   });
   if (!isLoaded) {
     return <div>Loading...</div>;

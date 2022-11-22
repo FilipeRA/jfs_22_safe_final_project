@@ -6,8 +6,8 @@ import Geocode from 'react-geocode';
 import styles from '../styles/Gallery.module.css';
 
 const Coordinates = async address => {
-  // Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
-  Geocode.setApiKey('AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E');
+  Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+  // Geocode.setApiKey('AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E');
 
   const geoLocations = await Geocode.fromAddress(address)
     .then(res => res.results[0].geometry.location)
