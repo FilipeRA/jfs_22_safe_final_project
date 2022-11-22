@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
-import {
-  GoogleMap, useLoadScript, MarkerF,
-} from '@react-google-maps/api';
-import Geocode from 'react-geocode';
+import React from 'react';
+import { useLoadScript } from '@react-google-maps/api';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Map from '../../components/Map';
+import styles from '../../styles/Gallery.module.css';
 
 export const getStaticProps = async () => {
   const url = 'http://localhost:8080/api/professionals';
@@ -13,22 +14,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Coordinates = async address => {
-  Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
-
-  const thisShit = await Geocode.fromAddress(address).then(
-    response => {
-      const coord = response.results[0].geometry.location;
-      return coord;
-    },
-    error => {
-      console.error(error);
-    },
-  );
-  return { props: { geoLocations: thisShit } };
-};
-
-const index = ({ professionals }) => {
+const Index = ({ professionals }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -37,39 +23,29 @@ const index = ({ professionals }) => {
     return <div>Loading...</div>;
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
+  const data = router.query;
+  console.log(data);
+
+  const filterPro = professionals.filter(pro => pro.professionalService.includes(data.service));
+  console.log(filterPro);
+
   return (
-    <Map professionals={professionals} />
+    <section className={styles.galleryContainer}>
+      <div className={styles.proContainer}>
+        {filterPro.map(pro => (
+          <Link href={`/gallery/${pro.id}`} key={pro.id} className={styles.pro}>
+            <h2>Image</h2>
+            <h2>{pro.professionalName}</h2>
+            <p>{pro.professionalRating}</p>
+            <p>{pro.professionalPrice}</p>
+          </Link>
+        ))}
+      </div>
+      <Map professionals={filterPro} />
+    </section>
   );
 };
 
-export default index;
-
-// console.log(Coordinates('Stockholm'));
-
-function Map({ professionals }) {
-  return (
-    <GoogleMap
-      zoom={13}
-      center={{ lat: 59.334591, lng: 18.06324 }}
-      mapContainerClassName="map-container">
-      {professionals.map(professional => {
-        const tn = Coordinates(professional.professionalAddress).then(data => data);
-
-        const printTn = async () => {
-          const blah = await tn;
-          console.log(blah);
-          return blah;
-        };
-
-        const blahblah = printTn();
-        console.log(blahblah.lat);
-
-        return (
-          <MarkerF
-            key={professional.id}
-            position={{ lat: 59.334591, lng: 18.06324 }} />
-        );
-      })}
-    </GoogleMap>
-  );
-}
+export default Index;
