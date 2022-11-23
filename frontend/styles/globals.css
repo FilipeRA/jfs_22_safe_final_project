@@ -49,9 +49,9 @@ nav .logo {
   margin-left: 12px;
 }
 
-nav .search {
-  background-color: pink;
+nav .nav--links {
   display: flex;
+  align-items: center;
 }
 
 nav .nav--links a {
@@ -67,4 +67,3 @@ nav .nav--links a {
     background: black;
   }
 }
-
