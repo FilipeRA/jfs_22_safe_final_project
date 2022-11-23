@@ -47,14 +47,30 @@ const Account = () => {
     return (
       <div>
         <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px' }} />
-        <p>
-          Welcome
+        <h1>
+          Welcome,
           {' '}
-          {session.user.name}
+          {databaseData.userName}
+          !
+        </h1>
+        <p>
+          Email:
+          {' '}
+          {databaseData.userEmail}
         </p>
-        {/* <img src="https://ibb.co/FXMfZmY" alt="try" /> */}
+        <p>
+          Address:
+          {' '}
+          {databaseData.userAddress}
+        </p>
+
+        <p>
+          History:
+          {' '}
+          {databaseData.userHistory}
+        </p>
+
         <button type="submit" onClick={() => signOut()}>Sign out</button>
-        <p>{databaseData.userName}</p>
       </div>
     );
   }
