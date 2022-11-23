@@ -23,6 +23,12 @@ public class ProfessionalController {
         return ResponseEntity.ok(professionals);
     }
 
+    @GetMapping("/{id}")
+    ResponseEntity<Professional> getSpecificRecipe(@PathVariable String id) {
+        Professional specificProfessional = service.getSpecificProfessional(id);
+        return ResponseEntity.ok(specificProfessional);
+    }
+
     @PostMapping
     ResponseEntity<Professional> addProfessional(@RequestBody ProfessionalDTO professionalDTO) {
         Professional createdProfessional = service.addProfessional(professionalDTO);

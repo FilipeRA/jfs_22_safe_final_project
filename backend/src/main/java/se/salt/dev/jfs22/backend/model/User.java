@@ -16,9 +16,105 @@ public class User {
     private String userEmail;
     private String userAddress;
     private int userRating;
+    private String userImage;
     private List<UserHistory> userHistory;
-    private boolean profileExists;
+    private boolean userExists = false;
 
+    public User() {
+    }
+
+    public User(String userName, String userEmail) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+    }
+
+    public User(String userName, String userEmail, String userAddress, int userRating, String userImage, List<UserHistory> userHistory, boolean userExists) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userAddress = userAddress;
+        this.userRating = userRating;
+        this.userImage = userImage;
+        this.userHistory = userHistory;
+        this.userExists = userExists;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public int getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(int userRating) {
+        this.userRating = userRating;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
+    }
+
+    public List<UserHistory> getUserHistory() {
+        return userHistory;
+    }
+
+    public void setUserHistory(List<UserHistory> userHistory) {
+        this.userHistory = userHistory;
+    }
+
+    public boolean isUserExists() {
+        return userExists;
+    }
+
+    public void setUserExists(boolean userExists) {
+        this.userExists = userExists;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                ", userRating=" + userRating +
+                ", userImage='" + userImage + '\'' +
+                ", userHistory=" + userHistory +
+                ", userExists=" + userExists +
+                '}';
+    }
 }
 
 

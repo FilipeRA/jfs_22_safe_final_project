@@ -22,4 +22,8 @@ public class ProfessionalRepository {
         System.out.println(allProfessionals);
         return allProfessionals;
     }
+
+    public Professional findProfessionalById(String id) {
+        return proRepo.findProfessionalById(id);
+    }
 }

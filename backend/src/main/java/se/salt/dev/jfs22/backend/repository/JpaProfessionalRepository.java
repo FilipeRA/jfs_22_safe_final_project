@@ -6,4 +6,5 @@ import se.salt.dev.jfs22.backend.model.Professional;
 import java.util.List;
 
 public interface JpaProfessionalRepository extends MongoRepository<Professional, String>  {
+    Professional findProfessionalById(String id);
 }
