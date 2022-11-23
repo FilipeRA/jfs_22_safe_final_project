@@ -7,7 +7,6 @@ import styles from '../styles/Gallery.module.css';
 
 const Coordinates = async address => {
   Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
-  // Geocode.setApiKey('AIzaSyCDzX4gqAme3GnWVA-Revqa6I4y-9BPR7E');
 
   const geoLocations = await Geocode.fromAddress(address)
     .then(res => res.results[0].geometry.location)
@@ -51,10 +50,18 @@ const Map = ({ professionals, inputLocation }) => {
       zoom={13}
       center={centerCoords[0]}
       mapContainerClassName={styles.mapContainer}>
-      <MarkerF position={centerCoords[0]} icon="/youAreHere.png" />
+      <MarkerF position={centerCoords[0]} icon="/youAreHere.png" label={inputLocation} />
       {coords.map((coord, i) => (
         <MarkerF
           key={professionals[i].id}
+          icon="/label.png"
+          className={styles.markerStyle}
+          label={{
+            text: `${professionals[i].professionalPrice.toString()} kr SEK`,
+            color: '#FFFFF',
+            fontSize: '10px',
+            fontWeight: 'bold',
+          }}
           position={coord} />
       ))}
     </GoogleMap>

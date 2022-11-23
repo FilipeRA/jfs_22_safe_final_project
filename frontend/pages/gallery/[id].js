@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { signIn, useSession } from 'next-auth/react';
 import styles from '../../styles/Details.module.css';
 
 // eslint-disable-next-line max-len
@@ -29,24 +31,39 @@ export const getStaticProps = async context => { // if there are 10 paths, this 
   };
 };
 
-const Details = ({ professionals }) => (
-  <>
-    <Head>
-      <title>
-        Hire My Skills |
-        {' '}
-        {professionals.professionalName}
-      </title>
-      <meta name="keywords" content="professional" />
-    </Head>
-    <div className={styles.proDetails}>
-      <h1>Image</h1>
-      <h2>{professionals.professionalName}</h2>
-      <h3>{professionals.professionalAddress}</h3>
-      <h3>{professionals.professionalRating}</h3>
-      <h3>{professionals.professionalPrice}</h3>
-    </div>
-  </>
-);
+const Details = ({ professionals }) => {
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (session) {
+      router.push('/summary');
+    } else {
+      signIn();
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <title>
+          Hire My Skills |
+          {' '}
+          {professionals.professionalName}
+        </title>
+        <meta name="keywords" content="professional" />
+      </Head>
+      <div className={styles.proDetails}>
+        <h1>Image</h1>
+        <h2>{professionals.professionalName}</h2>
+        <h3>{professionals.professionalAddress}</h3>
+        <h3>{professionals.professionalRating}</h3>
+        <h3>{professionals.professionalPrice}</h3>
+      </div>
+      <button type="submit" onClick={handleSubmit}>Hire me!</button>
+    </>
+  );
+};
 
 export default Details;

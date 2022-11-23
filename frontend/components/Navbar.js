@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 const Navbar = () => {
+  const { data: session } = useSession();
+
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [service, setService] = useState('');
@@ -85,7 +88,9 @@ const Navbar = () => {
 
       <div className="nav--links">
         <Link href="/">Home</Link>
-        <Link href="/login">Login</Link>
+        {session
+          ? <Link href="/account">{session.user.name}</Link>
+          : <Link href="/login" onClick={() => signIn()}>Login</Link> }
       </div>
 
     </nav>
