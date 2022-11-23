@@ -3,6 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { signIn, useSession } from 'next-auth/react';
+import { Button, HiShoppingCart } from 'flowbite-react';
 import styles from '../../styles/Details.module.css';
 
 // eslint-disable-next-line max-len
@@ -61,7 +62,11 @@ const Details = ({ professionals }) => {
         <h3>{professionals.professionalRating}</h3>
         <h3>{professionals.professionalPrice}</h3>
       </div>
-      <button type="submit" onClick={handleSubmit}>Hire me!</button>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button onClick={handleSubmit}>
+          Hire Me
+        </Button>
+      </div>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSession, signOut, getSession } from 'next-auth/react';
-import Image from 'next/image';
+import { useSession, getSession } from 'next-auth/react';
 import { Tabs } from 'flowbite-react';
 
 export const getServerSideProps = async context => {
@@ -56,6 +55,7 @@ const Account = () => {
         </h1>
         <Tabs.Group
           aria-label="Tabs with underline"
+          // eslint-disable-next-line react/style-prop-object
           style="underline">
           <Tabs.Item active title="Profile">
             <p>

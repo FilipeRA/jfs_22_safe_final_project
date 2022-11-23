@@ -4,11 +4,10 @@ import { useRouter } from 'next/router';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import {
-  Dropdown, Avatar, Label, Select, TextInput, Checkbox, Button, Navbar,
+  Dropdown, Avatar, TextInput, Button,
 } from 'flowbite-react';
-import styles from '../styles/Home.module.css';
 
-const Navbarr = () => {
+const NavBar = () => {
   const { data: session } = useSession();
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -168,4 +167,4 @@ const Navbarr = () => {
   );
 };
 
-export default Navbarr;
+export default NavBar;

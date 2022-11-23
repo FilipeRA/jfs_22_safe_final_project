@@ -2,7 +2,6 @@ import React from 'react';
 import { useLoadScript } from '@react-google-maps/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import { Rating } from 'flowbite-react';
 import Map from '../../components/Map';
 import styles from '../../styles/Gallery.module.css';
