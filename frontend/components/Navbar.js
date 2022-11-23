@@ -54,21 +54,21 @@ const Navbarr = () => {
 
   return (
     <nav>
-      <Navbar.Brand href="/">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          className="mr-3 h-6 sm:h-9"
-          alt="Flowbite Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Hire My Skills
-        </span>
-      </Navbar.Brand>
+      {/* <Link href="/">
+        <Navbar.Brand>
+          <img href="/" src="/favicon.ico" width={40} height={40} alt="logo" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            Hire My Skills
+          </span>
+        </Navbar.Brand>
+      </Link> */}
 
-      {/* <div className="logo">
-        <Link href="/">
-          <Image href="/" src="/favicon.ico" width={40} height={40} alt="logo" />
+      <div className="nav-logo">
+        <Link className="nav-logo" href="/">
+          <Image className="logo" href="/" src="/favicon.ico" width={40} height={40} alt="logo" />
+          <div className="logo-title">Hire My Skills</div>
         </Link>
-      </div> */}
+      </div>
 
       {/* <form className="search">
         <input
@@ -129,8 +129,8 @@ const Navbarr = () => {
       <div className="nav--links">
 
         <Link href="/">Home</Link>
-        <Link href="/">About</Link>
-        <Link href="/">Contact</Link>
+        <Link href="/about">About</Link>
+        <Link href="/contact">Contact</Link>
 
         {session
           ? (
@@ -149,12 +149,10 @@ const Navbarr = () => {
                   </span>
                 </Dropdown.Header>
                 <Dropdown.Item>
-                  <Link href="/account">
-                    Profile
-                  </Link>
+                  <Link href="/account">My Account</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  History
+                  <Link href="/gallery">Weird, but click on text</Link>
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={() => signOut()}>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSession, signOut, getSession } from 'next-auth/react';
 import Image from 'next/image';
+import { Tabs } from 'flowbite-react';
 
 export const getServerSideProps = async context => {
   const session = await getSession(context);
@@ -46,7 +47,6 @@ const Account = () => {
   if (status === 'authenticated') {
     return (
       <div>
-
         <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px' }} />
         <h1>
           Welcome,
@@ -54,24 +54,43 @@ const Account = () => {
           {databaseData.userName}
           !
         </h1>
-        <p>
-          Email:
-          {' '}
-          {databaseData.userEmail}
-        </p>
-        <p>
-          Address:
-          {' '}
-          {databaseData.userAddress}
-        </p>
+        <Tabs.Group
+          aria-label="Tabs with underline"
+          style="underline">
+          <Tabs.Item active title="Profile">
+            <p>
+              Email:
+              {' '}
+              {databaseData.userEmail}
+            </p>
+            <p>
+              Address:
+              {' '}
+              {databaseData.userAddress}
+            </p>
+          </Tabs.Item>
+          <Tabs.Item
+            title="History">
+            <p>
+              History:
+              {' '}
+              {databaseData.userHistory}
+            </p>
+          </Tabs.Item>
+          <Tabs.Item title="Settings">
+            Settings content
+          </Tabs.Item>
+          <Tabs.Item title="Contacts">
+            Contacts content
+          </Tabs.Item>
+          <Tabs.Item
+            disabled
+            title="Disabled">
+            Disabled content
+          </Tabs.Item>
+        </Tabs.Group>
 
-        <p>
-          History:
-          {' '}
-          {databaseData.userHistory}
-        </p>
-
-        <button type="submit" onClick={() => signOut()}>Sign out</button>
+        {/* <button type="submit" onClick={() => signOut()}>Sign out</button> */}
       </div>
     );
   }
