@@ -89,7 +89,12 @@ const Navbar = () => {
       <div className="nav--links">
         <Link href="/">Home</Link>
         {session
-          ? <Link href="/account">{session.user.name}</Link>
+          // ? <Link href="/account">{session.user.name}</Link>
+          ? (
+            <Link href="/account">
+              <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px', width: '60px' }} />
+            </Link>
+          )
           : <Link href="/login" onClick={() => signIn()}>Login</Link> }
       </div>
 
