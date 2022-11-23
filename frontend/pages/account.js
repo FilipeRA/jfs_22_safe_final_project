@@ -46,6 +46,7 @@ const Account = () => {
   if (status === 'authenticated') {
     return (
       <div>
+
         <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px' }} />
         <h1>
           Welcome,
