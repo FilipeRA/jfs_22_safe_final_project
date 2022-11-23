@@ -17,6 +17,11 @@
   background-color: white;
   border-radius: 20px;
   height: 250px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .mapContainer {
@@ -25,6 +30,6 @@
   height: 80vh;
 }
 
-.markerStyle{
+.markerStyle {
   background-color: white;
 }

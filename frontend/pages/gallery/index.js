@@ -3,6 +3,7 @@ import { useLoadScript } from '@react-google-maps/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { Rating } from 'flowbite-react';
 import Map from '../../components/Map';
 import styles from '../../styles/Gallery.module.css';
 
@@ -34,17 +35,24 @@ const Index = ({ professionals }) => {
       <div className={styles.proContainer}>
         {filterPro.map(pro => (
           <Link href={`/gallery/${pro.id}`} key={pro.id} className={styles.pro}>
-            <h2>Image</h2>
-            <h2>{pro.professionalName}</h2>
+            <p>Image</p>
+            <p>{pro.professionalName}</p>
+            <p>{pro.professionalAddress}</p>
             <p>
-              <Image src="/star.png" width={20} height={20} alt="star rating" />
-              {' '}
-              {pro.professionalRating}
+              <Rating>
+                <Rating.Star />
+                <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
+                  4.95
+                  {' '}
+                  {pro.professionalRating}
+                </p>
+                <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
+              </Rating>
             </p>
             <p>
               {pro.professionalPrice}
               {' '}
-              kr
+              kr SEK
             </p>
           </Link>
         ))}
