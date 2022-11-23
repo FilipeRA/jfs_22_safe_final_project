@@ -38,7 +38,7 @@ const Index = ({ professionals }) => {
             <p>Image</p>
             <p>{pro.professionalName}</p>
             <p>{pro.professionalAddress}</p>
-            <p>
+            <div>
               <Rating>
                 <Rating.Star />
                 <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
@@ -48,7 +48,7 @@ const Index = ({ professionals }) => {
                 </p>
                 <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
               </Rating>
-            </p>
+            </div>
             <p>
               {pro.professionalPrice}
               {' '}
