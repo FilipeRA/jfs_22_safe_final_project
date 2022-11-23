@@ -26,7 +26,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+# .env*.local
 
 # vercel
 .vercel
@@ -109,10 +109,10 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
+# .env
+# .env.development.local
+# .env.test.local
+# .env.production.local
 # .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
