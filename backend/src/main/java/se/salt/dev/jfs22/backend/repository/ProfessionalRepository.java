@@ -17,9 +17,7 @@ public class ProfessionalRepository {
     }
 
     public List<Professional> findAll() {
-        System.out.println("This prints");
         List<Professional> allProfessionals = proRepo.findAll();
-        System.out.println(allProfessionals);
         return allProfessionals;
     }
 

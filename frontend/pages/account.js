@@ -41,9 +41,8 @@ const Account = () => {
     }
   }, [session]);
 
-  console.log(databaseData);
-
   if (status === 'authenticated') {
+    console.log(databaseData.userHistory);
     return (
       <div>
         <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px' }} />
@@ -71,11 +70,23 @@ const Account = () => {
           </Tabs.Item>
           <Tabs.Item
             title="History">
-            <p>
+            <div>
               History:
               {' '}
-              {databaseData.userHistory}
-            </p>
+              { databaseData.userHistory
+              && databaseData.userHistory.map(history => (
+                <div key={history.historyId}>
+                  <p>{history.professionalName}</p>
+                  <p>{history.professionalService}</p>
+                  <p>
+                    {history.totalServicePrice}
+                    {' '}
+                    kr SEK
+                  </p>
+                </div>
+
+              ))}
+            </div>
           </Tabs.Item>
           <Tabs.Item title="Settings">
             Settings content

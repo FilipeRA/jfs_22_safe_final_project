@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document("users")
@@ -17,8 +18,7 @@ public class User {
     private String userAddress;
     private int userRating;
     private String userImage;
-    private List<UserHistory> userHistory;
-    private boolean userExists = false;
+    private List<UserHistory> userHistory = new ArrayList<>();
 
     public User() {
     }
@@ -28,14 +28,13 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public User(String userName, String userEmail, String userAddress, int userRating, String userImage, List<UserHistory> userHistory, boolean userExists) {
+    public User(String userName, String userEmail, String userAddress, int userRating, String userImage, List<UserHistory> userHistory) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userAddress = userAddress;
         this.userRating = userRating;
         this.userImage = userImage;
         this.userHistory = userHistory;
-        this.userExists = userExists;
     }
 
     public String getId() {
@@ -94,14 +93,6 @@ public class User {
         this.userHistory = userHistory;
     }
 
-    public boolean isUserExists() {
-        return userExists;
-    }
-
-    public void setUserExists(boolean userExists) {
-        this.userExists = userExists;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -112,7 +103,6 @@ public class User {
                 ", userRating=" + userRating +
                 ", userImage='" + userImage + '\'' +
                 ", userHistory=" + userHistory +
-                ", userExists=" + userExists +
                 '}';
     }
 }

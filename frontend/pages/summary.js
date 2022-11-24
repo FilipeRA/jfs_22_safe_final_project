@@ -1,13 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { Card } from 'flowbite-react';
+import styles from '../styles/Summary.module.css';
 
-const summary = () => (
-  <div>
-    <h1>SUMMARY</h1>
-    <Link href="/">
-      <p>Back to Homepage</p>
-    </Link>
-  </div>
-);
+const Summary = () => {
+  const { data: session, status } = useSession();
 
-export default summary;
+  const [lastUserHistory, setLastUserHistory] = useState({});
+
+  useEffect(() => {
+    if (session) {
+      fetch(`http://localhost:8080/api/users/${session.user.email}`, {
+        mode: 'cors',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then(data => data.json())
+        .then(res => setLastUserHistory(res));
+    }
+  }, [session]);
+
+  if (status === 'authenticated') {
+    console.log(lastUserHistory);
+    return (
+      <div>
+        <h1>SUMMARY</h1>
+
+        <div className={styles.invoiceContainer}>
+          <h2>
+            Professional:
+            {' '}
+            {lastUserHistory.professionalName}
+          </h2>
+
+        </div>
+
+        <Link href="/">
+          <p>Back to Homepage</p>
+        </Link>
+      </div>
+
+    );
+  }
+};
+
+export default Summary;

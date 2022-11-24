@@ -3,8 +3,7 @@ package se.salt.dev.jfs22.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se.salt.dev.jfs22.backend.model.User;
-import se.salt.dev.jfs22.backend.model.UserDTO;
+import se.salt.dev.jfs22.backend.model.*;
 import se.salt.dev.jfs22.backend.service.AppService;
 
 @CrossOrigin
@@ -15,15 +14,21 @@ public class UserController {
     @Autowired
     AppService service;
 
-    @GetMapping
-    ResponseEntity<User> getSpecificUser(@RequestBody UserDTO userDTO) {
-        User specificUser = service.getSpecificUser(userDTO);
-        return ResponseEntity.ok(specificUser);
+    @GetMapping("/{userEmail}")
+    ResponseEntity<UserHistory> getLastUserHistory(@PathVariable String userEmail) {
+        UserHistory lastUserHistory = service.getLastUserHistory(userEmail);
+        return ResponseEntity.ok(lastUserHistory);
     }
 
     @PostMapping
-    ResponseEntity<User> addUser(@RequestBody UserDTO userDTO) {
-        User createdUser = service.addUser(userDTO);
+    ResponseEntity<UserResDTO> addUser(@RequestBody UserDTO userDTO) {
+        UserResDTO createdUser = service.addUser(userDTO);
         return ResponseEntity.ok(createdUser);
+    }
+
+    @PatchMapping("/{userEmail}")
+    ResponseEntity<UserHistory> updateUserHistory(@PathVariable String userEmail, @RequestBody UserHistoryDTO userHistoryDTO) {
+        UserHistory updatedUser = service.updateUserHistory(userEmail, userHistoryDTO);
+        return ResponseEntity.ok(updatedUser);
     }
 }

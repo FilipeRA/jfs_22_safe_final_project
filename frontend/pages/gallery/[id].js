@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { Button, HiShoppingCart } from 'flowbite-react';
 import styles from '../../styles/Details.module.css';
 
@@ -39,7 +39,27 @@ const Details = ({ professionals }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (session) {
-      router.push('/summary');
+      const serviceHistory = {
+        userName: session.user.name,
+        userEmail: session.user.email,
+        professionalId: professionals.id,
+        professionalName: professionals.professionalName,
+        professionalService: professionals.professionalService,
+        totalServicePrice: professionals.professionalPrice,
+      };
+
+      console.log(serviceHistory);
+
+      fetch(`http://localhost:8080/api/users/${session.user.email}`, {
+        method: 'PATCH',
+        mode: 'cors',
+        body: JSON.stringify(serviceHistory),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+
+      router.push('/loading');
     } else {
       signIn();
     }

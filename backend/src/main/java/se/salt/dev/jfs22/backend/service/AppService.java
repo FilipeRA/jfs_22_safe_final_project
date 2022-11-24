@@ -2,10 +2,7 @@ package se.salt.dev.jfs22.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.salt.dev.jfs22.backend.model.Professional;
-import se.salt.dev.jfs22.backend.model.ProfessionalDTO;
-import se.salt.dev.jfs22.backend.model.User;
-import se.salt.dev.jfs22.backend.model.UserDTO;
+import se.salt.dev.jfs22.backend.model.*;
 import se.salt.dev.jfs22.backend.repository.ProfessionalRepository;
 import se.salt.dev.jfs22.backend.repository.UserRepository;
 
@@ -48,14 +45,76 @@ public class AppService {
         return userRepo.findUserByEmail(userDTO.userEmail());
     }
 
-    public User addUser(UserDTO userDTO) {
+    public UserResDTO addUser(UserDTO userDTO) {
         if (userRepo.findUserByEmail(userDTO.userEmail()) == null) {
             User newUser = new User(
                     userDTO.userName(),
                     userDTO.userEmail());
-            return userRepo.save(newUser);
+            User createdUser = userRepo.save(newUser);
+
+            List<UserHistory> userHistories = createdUser.getUserHistory().stream()
+                    .map(userHistory -> new UserHistory(
+                            userHistory.getProfessionalId(),
+                            userHistory.getProfessionalName(),
+                            userHistory.getProfessionalService(),
+                            userHistory.getTotalServicePrice()))
+                    .toList();
+
+            UserResDTO userResDTO = new UserResDTO(
+                    createdUser.getId(),
+                    createdUser.getUserName(),
+                    createdUser.getUserEmail(),
+                    createdUser.getUserAddress(),
+                    createdUser.getUserRating(),
+                    createdUser.getUserImage(),
+                    userHistories
+            );
+
+            return userResDTO;
         }
 
-        return userRepo.findUserByEmail(userDTO.userEmail());
+        User user = userRepo.findUserByEmail(userDTO.userEmail());
+
+        List<UserHistory> userHistories = user.getUserHistory().stream()
+                .map(userHistory -> new UserHistory(
+                        userHistory.getHistoryId(),
+                        userHistory.getProfessionalId(),
+                        userHistory.getProfessionalName(),
+                        userHistory.getProfessionalService(),
+                        userHistory.getTotalServicePrice()))
+                .toList();
+
+        return new UserResDTO(
+                user.getId(),
+                user.getUserName(),
+                user.getUserEmail(),
+                user.getUserAddress(),
+                user.getUserRating(),
+                user.getUserImage(),
+                userHistories
+        );
+
+    }
+
+    public UserHistory updateUserHistory(String userEmail, UserHistoryDTO userHistoryDTO) {
+        if (userRepo.findUserByEmail(userEmail) == null) {
+            User newUser = new User(
+                    userHistoryDTO.userName(),
+                    userHistoryDTO.userEmail());
+            userRepo.save(newUser);
+        }
+
+        UserHistory userHistory = new UserHistory(
+                userHistoryDTO.professionalId(),
+                userHistoryDTO.professionalName(),
+                userHistoryDTO.professionalService(),
+                userHistoryDTO.totalServicePrice()
+                );
+        return userRepo.updateUserHistoryByEmail(userEmail, userHistory);
+    }
+
+    public UserHistory getLastUserHistory(String userEmail) {
+        User user = userRepo.findUserByEmail(userEmail);
+        return user.getUserHistory().get(user.getUserHistory().size() - 1);
     }
 }

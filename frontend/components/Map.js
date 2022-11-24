@@ -3,6 +3,7 @@ import {
   GoogleMap, MarkerF,
 } from '@react-google-maps/api';
 import Geocode from 'react-geocode';
+import { Card } from 'flowbite-react';
 import styles from '../styles/Gallery.module.css';
 
 const Coordinates = async address => {
