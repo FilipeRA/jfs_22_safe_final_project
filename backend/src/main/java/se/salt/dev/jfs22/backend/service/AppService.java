@@ -21,7 +21,9 @@ public class AppService {
         Professional newProfessional = new Professional(
                 professionalDTO.professionalName(),
                 professionalDTO.professionalAddress(),
-                professionalDTO.professionalService()
+                professionalDTO.professionalService(),
+                professionalDTO.professionalRating(),
+                professionalDTO.professionalPrice()
         );
         return proRepo.save(newProfessional);
     }
@@ -34,15 +36,8 @@ public class AppService {
         return proRepo.findProfessionalById(id);
     }
 
-    public User getSpecificUser(UserDTO userDTO) {
-        if (userRepo.findUserByEmail(userDTO.userEmail()) == null) {
-            User newUser = new User(
-                    userDTO.userName(),
-                    userDTO.userEmail());
-            return userRepo.save(newUser);
-        }
-
-        return userRepo.findUserByEmail(userDTO.userEmail());
+    public User getUser(String userEmail) {
+        return userRepo.findUserByEmail(userEmail);
     }
 
     public UserResDTO addUser(UserDTO userDTO) {
@@ -109,7 +104,7 @@ public class AppService {
                 userHistoryDTO.professionalName(),
                 userHistoryDTO.professionalService(),
                 userHistoryDTO.totalServicePrice()
-                );
+        );
         return userRepo.updateUserHistoryByEmail(userEmail, userHistory);
     }
 
@@ -117,4 +112,5 @@ public class AppService {
         User user = userRepo.findUserByEmail(userEmail);
         return user.getUserHistory().get(user.getUserHistory().size() - 1);
     }
+
 }

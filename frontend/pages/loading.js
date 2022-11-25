@@ -10,7 +10,7 @@ const Loading = () => {
     setTimeout(() => {
       // router.go(1); // can go back and forth through the history
       router.push('/summary'); // redirect to the homepage after 3 seconds
-    }, 2000);
+    }, 1000);
   }, [router]);
 
   return (

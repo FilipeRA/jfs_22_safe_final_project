@@ -15,6 +15,12 @@ public class UserController {
     AppService service;
 
     @GetMapping("/{userEmail}")
+    ResponseEntity<User> getUser(@PathVariable String userEmail) {
+        User user = service.getUser(userEmail);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/history/{userEmail}")
     ResponseEntity<UserHistory> getLastUserHistory(@PathVariable String userEmail) {
         UserHistory lastUserHistory = service.getLastUserHistory(userEmail);
         return ResponseEntity.ok(lastUserHistory);

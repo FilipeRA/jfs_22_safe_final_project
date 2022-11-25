@@ -2,7 +2,8 @@ import React from 'react';
 import { useLoadScript } from '@react-google-maps/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Rating } from 'flowbite-react';
+import Image from 'next/image';
+import { Card } from 'flowbite-react';
 import Map from '../../components/Map';
 import styles from '../../styles/Gallery.module.css';
 
@@ -33,27 +34,51 @@ const Index = ({ professionals }) => {
     <section className={styles.galleryContainer}>
       <div className={styles.proContainer}>
         {filterPro.map(pro => (
-          <Link href={`/gallery/${pro.id}`} key={pro.id} className={styles.pro}>
-            <p>Image</p>
-            <p>{pro.professionalName}</p>
-            <p>{pro.professionalAddress}</p>
-            <div>
-              <Rating>
-                <Rating.Star />
-                <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
-                  4.95
+          <Link href={`/gallery/${pro.id}`} key={pro.id} className="max-w-2xl">
+            <Card
+              imgAlt="Professional Image"
+              imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
+
+              <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex justify-between">
+                <p>
+                  {pro.professionalName}
+
+                </p>
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  {' '}
+                  <Image src="/star.png" width={20} height={20} alt="star rating" />
                   {' '}
                   {pro.professionalRating}
                 </p>
-                <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
-              </Rating>
-            </div>
-            <p>
-              {pro.professionalPrice}
-              {' '}
-              kr SEK
-            </p>
+              </h5>
+
+              <p className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {' '}
+                {pro.professionalPrice}
+                {' '}
+                kr SEK
+              </p>
+
+              <div className="font-normal text-gray-700 dark:text-gray-400">
+                {pro.professionalAddress}
+              </div>
+            </Card>
           </Link>
+
+          // <Link href={`/gallery/${pro.id}`} key={pro.id} className={styles.pro}>
+          //   <h2>Image</h2>
+          //   <h2>{pro.professionalName}</h2>
+          //   <p>
+          //     <Image src="/star.png" width={20} height={20} alt="star rating" />
+          //     {' '}
+          //     {pro.professionalRating}
+          //   </p>
+          //   <p>
+          //     {pro.professionalPrice}
+          //     {' '}
+          //     kr
+          //   </p>
+          // </Link>
         ))}
       </div>
       <Map professionals={filterPro} inputLocation={inputLocation} />

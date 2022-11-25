@@ -28,6 +28,14 @@ public class Professional {
         this.professionalService = professionalService;
     }
 
+    public Professional(String professionalName, String professionalAddress, String professionalService, String professionalRating, long professionalPrice) {
+        this.professionalName = professionalName;
+        this.professionalAddress = professionalAddress;
+        this.professionalService = professionalService;
+        this.professionalRating = professionalRating;
+        this.professionalPrice = professionalPrice;
+    }
+
     public Professional(String id, String professionalName, String professionalAddress, String professionalService, String professionalRating, long professionalPrice) {
         this.id = id;
         this.professionalName = professionalName;

@@ -11,7 +11,7 @@ const Summary = () => {
 
   useEffect(() => {
     if (session) {
-      fetch(`http://localhost:8080/api/users/${session.user.email}`, {
+      fetch(`http://localhost:8080/api/users/history/${session.user.email}`, {
         mode: 'cors',
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -22,7 +22,6 @@ const Summary = () => {
   }, [session]);
 
   if (status === 'authenticated') {
-    console.log(lastUserHistory);
     return (
       <div>
         <h1>SUMMARY</h1>

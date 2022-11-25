@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSession, getSession } from 'next-auth/react';
-import { Tabs } from 'flowbite-react';
+import Link from 'next/link';
+import { Tabs, Button } from 'flowbite-react';
 
 export const getServerSideProps = async context => {
   const session = await getSession(context);
@@ -42,7 +43,6 @@ const Account = () => {
   }, [session]);
 
   if (status === 'authenticated') {
-    console.log(databaseData.userHistory);
     return (
       <div>
         <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px' }} />
@@ -67,6 +67,12 @@ const Account = () => {
               {' '}
               {databaseData.userAddress}
             </p>
+            <div className="flex flex-wrap gap-2">
+              <Button>
+                <Link href="/editAccount" className="max-w-sm">Edit profile</Link>
+              </Button>
+            </div>
+
           </Tabs.Item>
           <Tabs.Item
             title="History">

@@ -49,6 +49,14 @@ nav {
   border-bottom: 1px solid #ddd;
 }
 
+nav .logo {
+  margin-left: 12px;
+}
+
+nav .search {
+  background-color: pink;
+  display: flex;
+}
 nav .nav-logo {
   margin-left: 0px;
   display: flex;
@@ -75,6 +83,3 @@ nav .nav--links a {
   }
 }
 
-.drop {
-  color: pink;
-}
