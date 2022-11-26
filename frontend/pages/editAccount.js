@@ -10,6 +10,9 @@ const EditAccount = () => {
   const router = useRouter();
 
   const [user, setUser] = useState({});
+  const [address, setAddress] = useState('');
+  const [postCode, setPostCode] = useState('');
+  const [country, setCountry] = useState('');
 
   useEffect(() => {
     if (session) {
@@ -23,11 +26,32 @@ const EditAccount = () => {
     }
   }, [session]);
 
+  const handleAddressChange = e => {
+    setAddress(e.target.value);
+  };
+
+  const handlePostCodeChange = e => {
+    setPostCode(e.target.value);
+  };
+
+  const handleCountryChange = e => {
+    setCountry(e.target.value);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     const userAddress = {
-      userAddress: session.user.name,
+      userAddress: `${address}, ${postCode}, ${country}`,
     };
+
+    fetch(`http://localhost:8080/api/users/addressChange/${session.user.email}`, {
+      method: 'PATCH',
+      mode: 'cors',
+      body: JSON.stringify(userAddress),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
 
     console.log(userAddress);
     router.push('/account');
@@ -70,6 +94,7 @@ const EditAccount = () => {
             <TextInput
               id="address1"
               type="text"
+              onChange={handleAddressChange}
               required />
           </div>
           <div>
@@ -81,6 +106,7 @@ const EditAccount = () => {
             <TextInput
               id="postCode1"
               type="text"
+              onChange={handlePostCodeChange}
               required />
           </div>
           <div id="select">
@@ -91,7 +117,11 @@ const EditAccount = () => {
             </div>
             <Select
               id="countries"
+              onChange={handleCountryChange}
               required>
+              <option selected>
+                Choose a country
+              </option>
               <option>
                 Sweden
               </option>

@@ -113,4 +113,20 @@ public class AppService {
         return user.getUserHistory().get(user.getUserHistory().size() - 1);
     }
 
+    public UserResDTO changeUserAddress(String userEmail, UserAddressDTO userAddressDTO) {
+        User userToUpdate = userRepo.findUserByEmail(userEmail);
+        userToUpdate.setUserAddress(userAddressDTO.userAddress());
+
+        User updatedUser = userRepo.save(userToUpdate);
+
+        return new UserResDTO(
+                updatedUser.getId(),
+                updatedUser.getUserName(),
+                updatedUser.getUserEmail(),
+                updatedUser.getUserAddress(),
+                updatedUser.getUserRating(),
+                updatedUser.getUserImage(),
+                updatedUser.getUserHistory()
+        );
+    }
 }

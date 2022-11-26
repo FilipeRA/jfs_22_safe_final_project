@@ -39,18 +39,17 @@ const Index = ({ professionals }) => {
               imgAlt="Professional Image"
               imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
 
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex justify-between">
+              <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>
                   {pro.professionalName}
-
-                </p>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
-                  {' '}
-                  <Image src="/star.png" width={20} height={20} alt="star rating" />
-                  {' '}
-                  {pro.professionalRating}
                 </p>
               </h5>
+              <p className="font-normal text-gray-700 dark:text-gray-400 flex justify-left">
+                {' '}
+                <Image src="/star.png" width={20} height={20} alt="star rating" />
+                {' '}
+                {pro.professionalRating}
+              </p>
 
               <p className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {' '}

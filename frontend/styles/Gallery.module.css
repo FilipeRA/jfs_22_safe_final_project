@@ -1,6 +1,7 @@
 .galleryContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  height: 100vh
 }
 
 .proContainer {
@@ -9,8 +10,9 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2em;
   margin: 0 20px;
-  height: 100vh;
+  height: 98vh;
   overflow: auto;
+  margin-top: 20px;
 }
 
 .pro {

@@ -4,6 +4,7 @@
 
 html,
 body {
+  
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -40,23 +41,25 @@ a {
   margin-right: auto;
 } */
 
+.Submit-btn {
+  color: #FBFBFF;
+  background-color: #0B4F6C;
+}
+
 nav {
-  margin: 10px auto 80px;
-  padding: 10px 0;
+  margin: 10px auto 0px;
+  padding: 0px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ddd;
+  margin-top: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0 12px 0 12px;
+
 }
 
-nav .logo {
-  margin-left: 12px;
-}
-
-nav .search {
-  background-color: pink;
-  display: flex;
-}
 nav .nav-logo {
   margin-left: 0px;
   display: flex;
@@ -74,12 +77,16 @@ nav .nav--links a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
+  /* html {
     color-scheme: dark;
-  }
+  } */
   body {
-    color: white;
-    background: black;
+    color: #040F16;
+    background: #FBFBFF;
   }
+}
+
+body {
+  height: 100%;
 }
 

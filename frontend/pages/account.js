@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSession, getSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Tabs, Button } from 'flowbite-react';
+import styles from '../styles/Account.module.css';
 
 export const getServerSideProps = async context => {
   const session = await getSession(context);
@@ -44,7 +45,7 @@ const Account = () => {
 
   if (status === 'authenticated') {
     return (
-      <div>
+      <div className={styles.tryy}>
         <img src={session.user.image} alt="profile-image" style={{ borderRadius: '50px' }} />
         <h1>
           Welcome,
@@ -94,20 +95,7 @@ const Account = () => {
               ))}
             </div>
           </Tabs.Item>
-          <Tabs.Item title="Settings">
-            Settings content
-          </Tabs.Item>
-          <Tabs.Item title="Contacts">
-            Contacts content
-          </Tabs.Item>
-          <Tabs.Item
-            disabled
-            title="Disabled">
-            Disabled content
-          </Tabs.Item>
         </Tabs.Group>
-
-        {/* <button type="submit" onClick={() => signOut()}>Sign out</button> */}
       </div>
     );
   }

@@ -32,6 +32,12 @@ public class UserController {
         return ResponseEntity.ok(createdUser);
     }
 
+    @PatchMapping("/addressChange/{userEmail}")
+    ResponseEntity<UserResDTO> changeUserAddress(@PathVariable String userEmail, @RequestBody UserAddressDTO userAddress) {
+        UserResDTO createdUser = service.changeUserAddress(userEmail, userAddress);
+        return ResponseEntity.ok(createdUser);
+    }
+
     @PatchMapping("/{userEmail}")
     ResponseEntity<UserHistory> updateUserHistory(@PathVariable String userEmail, @RequestBody UserHistoryDTO userHistoryDTO) {
         UserHistory updatedUser = service.updateUserHistory(userEmail, userHistoryDTO);

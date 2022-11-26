@@ -120,7 +120,7 @@ const NavBar = () => {
             onChange={handleLocationChange}
             required />
         </div>
-        <Button type="submit" onClick={handleSubmit}>
+        <Button className="Submit-btn" type="submit" color="cyan" onClick={handleSubmit}>
           Submit
         </Button>
       </form>

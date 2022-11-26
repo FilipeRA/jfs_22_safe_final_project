@@ -11,5 +11,13 @@ module.exports = {
     // eslint-disable-next-line global-require
     require('flowbite/plugin'),
   ],
-  theme: {},
+  theme: {
+    colors: {
+      blue: '#0B4F6C',
+      cyan: '#01BAEF',
+      white: '#FBFBFF',
+      primary: '#80858B',
+      black: '#040F16',
+    },
+  },
 };

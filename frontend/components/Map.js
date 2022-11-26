@@ -51,7 +51,7 @@ const Map = ({ professionals, inputLocation }) => {
       zoom={13}
       center={centerCoords[0]}
       mapContainerClassName={styles.mapContainer}>
-      <MarkerF position={centerCoords[0]} icon="/youAreHere.png" label={inputLocation} />
+      <MarkerF position={centerCoords[0]} icon="/youAreHere.png" />
       {coords.map((coord, i) => (
         <MarkerF
           key={professionals[i].id}
