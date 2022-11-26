@@ -82,6 +82,14 @@ const Details = ({ professionals }) => {
         <h3>{professionals.professionalRating}</h3>
         <h3>{professionals.professionalPrice}</h3>
       </div>
+      <div>
+        {professionals.professionalHistory.map(history => (
+          <div key={history.historyId}>
+            <p>{history.userName}</p>
+            <p>{history.userService}</p>
+          </div>
+        ))}
+      </div>
       <div className="flex flex-wrap items-center gap-2">
         <Button onClick={handleSubmit}>
           Hire Me

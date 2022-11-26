@@ -5,6 +5,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document("professionals")
 public class Professional {
     @Id
@@ -15,8 +18,7 @@ public class Professional {
     private String professionalService;
     private String professionalRating;
     private long professionalPrice;
-    // availability
-    // professionalHistory?
+    private List<ProfessionalHistory> professionalHistory = new ArrayList<>();
 
 
     public Professional() {
@@ -43,6 +45,16 @@ public class Professional {
         this.professionalService = professionalService;
         this.professionalRating = professionalRating;
         this.professionalPrice = professionalPrice;
+    }
+
+    public Professional(String id, String professionalName, String professionalAddress, String professionalService, String professionalRating, long professionalPrice, List<UserHistory> userHistory) {
+        this.id = id;
+        this.professionalName = professionalName;
+        this.professionalAddress = professionalAddress;
+        this.professionalService = professionalService;
+        this.professionalRating = professionalRating;
+        this.professionalPrice = professionalPrice;
+        this.professionalHistory = professionalHistory;
     }
 
     public String getId() {
@@ -93,6 +105,14 @@ public class Professional {
         this.professionalPrice = professionalPrice;
     }
 
+    public List<ProfessionalHistory> getProfessionalHistory() {
+        return professionalHistory;
+    }
+
+    public void setProfessionalHistory(List<ProfessionalHistory> professionalHistory) {
+        this.professionalHistory = professionalHistory;
+    }
+
     @Override
     public String toString() {
         return "Professional{" +
@@ -102,6 +122,7 @@ public class Professional {
                 ", professionalService='" + professionalService + '\'' +
                 ", professionalRating='" + professionalRating + '\'' +
                 ", professionalPrice=" + professionalPrice +
+                ", professionalHistory=" + professionalHistory +
                 '}';
     }
 }

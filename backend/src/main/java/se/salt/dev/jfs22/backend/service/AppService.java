@@ -105,7 +105,23 @@ public class AppService {
                 userHistoryDTO.professionalService(),
                 userHistoryDTO.totalServicePrice()
         );
-        return userRepo.updateUserHistoryByEmail(userEmail, userHistory);
+
+        UserHistory savedUserHistory = userRepo.updateUserHistoryByEmail(userEmail, userHistory);
+
+        User updatedUser = userRepo.findUserByEmail(userEmail);
+        System.out.println(updatedUser);
+
+        ProfessionalHistory proHistory = new ProfessionalHistory(
+                updatedUser.getId(),
+                updatedUser.getUserName(),
+                savedUserHistory.getProfessionalService()
+        );
+
+        Professional pro = proRepo.updateProfessionalHistoryByProfessionalId(userHistory.getProfessionalId(), proHistory);
+
+        System.out.println(pro);
+
+        return savedUserHistory;
     }
 
     public UserHistory getLastUserHistory(String userEmail) {
