@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import {
   Label, TextInput, Button, Checkbox, Select,
 } from 'flowbite-react';
+import styles from '../styles/EditAccount.module.css';
 
 const EditAccount = () => {
   const { data: session, status } = useSession();
@@ -59,7 +60,7 @@ const EditAccount = () => {
 
   if (status === 'authenticated') {
     return (
-      <div>
+      <div className={styles.changeAddressForm}>
         <form className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">

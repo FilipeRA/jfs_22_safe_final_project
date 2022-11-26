@@ -6,8 +6,14 @@ import Image from 'next/image';
 import {
   Dropdown, Avatar, TextInput, Button,
 } from 'flowbite-react';
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 
 const NavBar = () => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    libraries: ['places'],
+  });
+
   const { data: session } = useSession();
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -113,12 +119,14 @@ const NavBar = () => {
           </datalist>
         </div>
         <div>
-          <TextInput
-            type="text"
-            placeholder="location"
-            value={location}
-            onChange={handleLocationChange}
-            required />
+          <Autocomplete>
+            <TextInput
+              type="text"
+              placeholder="location"
+              value={location}
+              onChange={handleLocationChange}
+              required />
+          </Autocomplete>
         </div>
         <Button className="Submit-btn" type="submit" color="cyan" onClick={handleSubmit}>
           Submit
@@ -149,9 +157,6 @@ const NavBar = () => {
                 </Dropdown.Header>
                 <Dropdown.Item>
                   <Link href="/account">My Account</Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link href="/gallery">Weird, but click on text</Link>
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={() => signOut()}>
