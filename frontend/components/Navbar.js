@@ -68,13 +68,7 @@ const NavBar = () => {
 
       <div className={styles.navLogo}>
         <Link href="/">
-          <Navbar.Brand href="/">
-            <Image src="/HireMe.jpg" width={130} height={130} alt="hire me logo" />
-            {/* <img
-              src="HireMe.jpg"
-              className="mr-3 h-6 sm:h-9"
-              alt="HireMe Logo" /> */}
-          </Navbar.Brand>
+          <Image src="/HireMe.jpg" width={130} height={130} alt="hire me logo" />
         </Link>
       </div>
 
