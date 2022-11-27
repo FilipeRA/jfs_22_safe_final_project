@@ -3,7 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { Button, HiShoppingCart } from 'flowbite-react';
+import { Button, HiShoppingCart, Card } from 'flowbite-react';
 import styles from '../../styles/Details.module.css';
 
 // eslint-disable-next-line max-len
@@ -26,7 +26,6 @@ export const getStaticProps = async context => { // if there are 10 paths, this 
   const { id } = context.params;
   const response = await fetch(`http://localhost:8080/api/professionals/${id}`);
   const data = await response.json();
-  console.log(data);
   return {
     props: { professionals: data },
   };
@@ -48,8 +47,6 @@ const Details = ({ professionals }) => {
         totalServicePrice: professionals.professionalPrice,
       };
 
-      console.log(serviceHistory);
-
       fetch(`http://localhost:8080/api/users/${session.user.email}`, {
         method: 'PATCH',
         mode: 'cors',
@@ -69,34 +66,74 @@ const Details = ({ professionals }) => {
     <>
       <Head>
         <title>
-          Hire My Skills |
+          HireMe |
           {' '}
           {professionals.professionalName}
         </title>
         <meta name="keywords" content="professional" />
+        <link rel="icon" href="/HireMeHead.png" />
       </Head>
-      <div className={styles.proDetails}>
-        <h1>Image</h1>
-        <h2>{professionals.professionalName}</h2>
-        <h3>{professionals.professionalAddress}</h3>
-        <h3>{professionals.professionalRating}</h3>
-        <h3>{professionals.professionalPrice}</h3>
-      </div>
-      <div>
-        {professionals.professionalHistory.map(history => (
-          <div key={history.historyId}>
-            <p>{history.userName}</p>
-            <p>{history.userService}</p>
+      <main>
+        <Card className={styles.latestCustomers}>
+          <div className="mb-4 items-center justify-between">
+            <h1>Image</h1>
+            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">{professionals.professionalName}</h5>
+            <h5>{professionals.professionalAddress}</h5>
+            <h5>{professionals.professionalRating}</h5>
+            <h5>
+              {professionals.professionalPrice}
+              {' '}
+              kr SEK
+            </h5>
           </div>
-        ))}
-      </div>
-      <div className="flex flex-wrap items-center gap-2">
-        <Button onClick={handleSubmit}>
-          Hire Me
-        </Button>
-      </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button onClick={handleSubmit}>
+              Hire Me
+            </Button>
+          </div>
+          <div className="mb-4 flex items-center justify-between">
+            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
+              Latest Services
+            </h5>
+          </div>
+          {professionals.professionalHistory.map(history => (
+            <div key={history.historyId} className="flow-root">
+              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                <li className="py-3 sm:py-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="shrink-0">
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                        alt="Neil image" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
+                        {history.userName}
+                      </p>
+                      <p className="truncate text-sm text-gray-500 dark:text-gray-400">
+                        {history.userService}
+                      </p>
+                    </div>
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                      {history.totalServicePrice}
+                      {' '}
+                      kr SEK
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          ))}
+        </Card>
+      </main>
     </>
   );
 };
 
 export default Details;
+
+// <div key={history.historyId}>
+//   <p>{history.userName}</p>
+//   <p>{history.userService}</p>
+// </div>

@@ -49,7 +49,7 @@ a {
 .footer-container {
   background-color: #fbfbff;
   border-top: 1px solid #eaeaea;
-  padding: 20px 16px 20px 16px;
+  padding: 20px 80px 20px 80px;
   position: sticky;
   bottom: 0;
   z-index: 1;
@@ -60,4 +60,26 @@ a {
 
 .footer-school-name {
   align-self: center;
+}
+
+.nav-links {
+  padding-right: 80px;
+}
+
+.gm-style .gm-style-iw-c {
+  transition: all 0.2s ease-in-out;
+  z-index: 0;
+}
+
+.gm-style:hover .gm-style-iw-c:hover {
+  padding: 10px !important;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.view-profile {
+  transition: all 0.2s ease-in-out;
+}
+.view-profile:hover {
+  transform: scale(0.98);
 }

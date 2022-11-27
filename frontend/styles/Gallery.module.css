@@ -1,18 +1,26 @@
 .galleryContainer {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto;
   width: 100%;
   background-color: white;
+}
+
+.proNumber {
+  grid-row: 1;
+  padding: 10px 0;
 }
 
 .proContainer {
   grid-column: 1 / 2;
   display: grid;
-  gap: 2em;
-  margin: 0 20px;
+  margin: 20px 20px 0;
   height: 98vh;
   overflow: auto;
-  margin-top: 20px;
+}
+
+.proGallery {
+  margin-top: 0;
 }
 
 .mapContainer {
@@ -23,8 +31,7 @@
   .galleryContainer {
     display: grid;
     grid-template-rows: fit-content(300px) fit-content(300px);
-    /* grid-template-rows: repeat(2, 1fr); */
-    height: 900px;
+    /* height: 1vh; */
   }
 
   .mapContainer {
@@ -35,30 +42,34 @@
   }
 
   .proContainer {
+    grid-template-rows: 50px fit-content(300px);
+    margin: 10px 20px;
+  }
+
+  /* .proNumber {
+    grid-row: 1 / 2;
+  } */
+
+  .proGallery {
     grid-row: 2 / 3;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2em;
-    margin: 0 20px;
-    margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .galleryContainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     height: 100vh;
   }
 
   .proContainer {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
     grid-row: 1/2;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2em;
     margin: 0 20px;
-    height: 98vh;
     overflow: auto;
     margin-top: 20px;
   }
@@ -67,28 +78,16 @@
     color: black;
     background-color: white;
     border-radius: 20px;
-    height: 250px;
   }
 
   .mapContainer {
-    grid-column: 3 / 5;
-    width: 100%;
+    grid-column: 2 / 3;
     height: 100vh;
-  }
-
-  .markerStyle {
-    background-color: white;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .galleryContainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    height: 100vh;
-  }
-
-  .proContainer {
+  /* .proContainer {
     grid-column: 1 / 3;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -104,5 +103,14 @@
     background-color: white;
     border-radius: 20px;
     height: 250px;
-  }
+  } */
 }
+
+.infoWindow {
+  background-color: white;
+  padding: 8px;
+}
+
+/* .infoWindow:hover {
+  transform: scale(0.95);
+} */

@@ -62,13 +62,13 @@ const NavBar = () => {
 
   return (
     <Navbar
-      className="navContainer"
       fluid
-      rounded>
+      rounded
+      className="navContainer">
 
       <div className={styles.navLogo}>
         <Link href="/">
-          <Image src="/HireMe.jpg" width={130} height={130} alt="hire me logo" />
+          <Image src="/HireMeLogo.png" width={120} height={120} alt="hire me logo" />
         </Link>
       </div>
 
@@ -135,7 +135,7 @@ const NavBar = () => {
         ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
       </div>
 
-      <Navbar.Collapse>
+      <Navbar.Collapse className="nav-links">
         <Navbar.Link
           href="/"
           active>
@@ -145,7 +145,7 @@ const NavBar = () => {
           About
         </Navbar.Link>
         <Navbar.Link href="/contact">
-          Contact
+          Contact Us
         </Navbar.Link>
       </Navbar.Collapse>
 

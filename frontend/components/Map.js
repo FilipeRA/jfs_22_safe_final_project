@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
-  GoogleMap, MarkerF,
+  GoogleMap, Marker, InfoWindow, InfoBox,
 } from '@react-google-maps/api';
 import Geocode from 'react-geocode';
-import { Card } from 'flowbite-react';
+import { Avatar } from 'flowbite-react';
+import Link from 'next/link';
 import styles from '../styles/Gallery.module.css';
 
 const Coordinates = async address => {
@@ -51,19 +52,49 @@ const Map = ({ professionals, inputLocation }) => {
       zoom={13}
       center={centerCoords[0]}
       mapContainerClassName={styles.mapContainer}>
-      <MarkerF position={centerCoords[0]} icon="/youAreHere.png" />
+      {/* <Marker position={centerCoords[0]} icon="/youAreHere.png" /> */}
       {coords.map((coord, i) => (
-        <MarkerF
-          key={professionals[i].id}
-          icon="/label.png"
-          className={styles.markerStyle}
-          label={{
-            text: `${professionals[i].professionalPrice.toString()} kr SEK`,
-            color: '#FFFFF',
-            fontSize: '10px',
-            fontWeight: 'bold',
-          }}
-          position={coord} />
+        <>
+          {/* <Marker
+            key={professionals[i].id}
+          // onClick={() => showDetails(coord)}
+          // icon="/label.png"
+            className={styles.markerStyle}
+            label={{
+              text: `${professionals[i].professionalPrice.toString()} kr SEK`,
+              color: 'pink',
+              fontSize: '15px',
+              fontWeight: 'bold',
+            }}
+            position={coord} /> */}
+          <Link key={professionals[i].id} href={`/gallery/${professionals[i].id}`}>
+            <InfoWindow
+              key={professionals[i].id}
+              position={coord}
+              className="try1">
+              <div className={styles.infoWindow}>
+                <Avatar
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded>
+                  <div className="space-y-1 font-medium dark:text-white">
+                    <div>
+                      {professionals[i].professionalName}
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      {professionals[i].professionalService}
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      {professionals[i].professionalPrice}
+                      {' '}
+                      kr SEK
+                    </div>
+                  </div>
+                </Avatar>
+              </div>
+            </InfoWindow>
+          </Link>
+        </>
+
       ))}
     </GoogleMap>
   );

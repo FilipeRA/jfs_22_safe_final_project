@@ -2,7 +2,7 @@ import React from 'react';
 import { Footer } from 'flowbite-react';
 import Image from 'next/image';
 
-const Footerr = () => (
+const PageFooter = () => (
   // <footer className="footer-container">
 
   //   {/* <span className="footer--links-left">
@@ -55,4 +55,4 @@ const Footerr = () => (
 
 );
 
-export default Footerr;
+export default PageFooter;
