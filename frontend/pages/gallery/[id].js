@@ -1,9 +1,13 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import { Button, HiShoppingCart, Card } from 'flowbite-react';
+import { signIn, useSession } from 'next-auth/react';
+import { Button, Card } from 'flowbite-react';
+import Image from 'next/image';
 import styles from '../../styles/Details.module.css';
 
 // eslint-disable-next-line max-len
@@ -11,7 +15,6 @@ import styles from '../../styles/Details.module.css';
 export const getStaticPaths = async () => {
   const response = await fetch('http://localhost:8080/api/professionals');
   const data = await response.json(); // data is an array of objects
-  console.log(data);
   const paths = data.map(pro => ({
     params: { id: pro.id.toString() }, // return an object from this array
   }));
@@ -75,7 +78,31 @@ const Details = ({ professionals }) => {
       </Head>
       <main>
         <Card className={styles.latestCustomers}>
-          <div className="mb-4 items-center justify-between">
+          <div className="flex flex-col items-center pb-10">
+            <Image src="/testProImage.png" width={300} height={300} className="mb-3 rounded-full shadow-lg" alt="test" />
+            <h5 className="mb-1 mt-1 text-xl font-medium text-gray-900 dark:text-white">
+              {professionals.professionalName}
+            </h5>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {professionals.professionalAddress}
+            </span>
+            <span className="text-sm text-gray-500 dark:text-gray-400 flex">
+              <Image src="/star.png" width={20} height={20} alt="star rating" />
+              {professionals.professionalRating}
+            </span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {professionals.professionalPrice}
+              {' '}
+              SEK / hour
+            </span>
+            <div className="mt-4 flex space-x-3 lg:mt-6">
+              <Button onClick={handleSubmit}>
+                Hire
+              </Button>
+            </div>
+          </div>
+
+          {/* <div className="mb-4 items-center justify-between">
             <h1>Image</h1>
             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">{professionals.professionalName}</h5>
             <h5>{professionals.professionalAddress}</h5>
@@ -85,12 +112,12 @@ const Details = ({ professionals }) => {
               {' '}
               kr SEK
             </h5>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
+          </div> */}
+          {/* <div className="flex flex-wrap items-center gap-2">
             <Button onClick={handleSubmit}>
-              Hire Me
+              Hire
             </Button>
-          </div>
+          </div> */}
           <div className="mb-4 flex items-center justify-between">
             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
               Latest Services
@@ -109,9 +136,13 @@ const Details = ({ professionals }) => {
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
+                        Client name:
+                        {' '}
                         {history.userName}
                       </p>
                       <p className="truncate text-sm text-gray-500 dark:text-gray-400">
+                        Booked as:
+                        {' '}
                         {history.userService}
                       </p>
                     </div>

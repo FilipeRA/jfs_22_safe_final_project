@@ -52,7 +52,7 @@ const Index = ({ professionals }) => {
             </div>
             <div className={styles.proGallery}>
               {filterPro.map(pro => (
-                <Link href={`/gallery/${pro.id}`} key={pro.id} className="max-w-2xl">
+                <div key={pro.id} className="max-w-2xl">
                   <Card
                     imgAlt="Professional Image"
                     imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
@@ -88,7 +88,7 @@ const Index = ({ professionals }) => {
                       </div>
                     </div>
                   </Card>
-                </Link>
+                </div>
               ))}
             </div>
 
