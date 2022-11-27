@@ -12,12 +12,10 @@ const Footer = () => (
     <ul className="footer--links-right">
       <li>
         {' '}
-        <Link href="https://github.com/FilipeRA/jfs_22_safe_final_project">
-          Github
-        </Link>
+        <Link href="https://github.com/FilipeRA/jfs_22_safe_final_project">Github</Link>
       </li>
       <li>
-        Salt JFS Fall 2022
+        <Link href="https://www.salt.dev/sv-SE">Salt JFS Fall 2022</Link>
       </li>
     </ul>
 
