@@ -49,14 +49,8 @@ const Footerr = () => (
       <Footer.Link href="https://github.com/FilipeRA/jfs_22_safe_final_project">
         <Image src="/GitHub-Mark-120px-plus.png" alt="" width={30} height={30} />
       </Footer.Link>
-      <Footer.Link href="#">
-        Privacy Policy
-      </Footer.Link>
-      <Footer.Link href="#">
-        Licensing
-      </Footer.Link>
-      <Footer.Link href="#">
-        Contact
+      <Footer.Link href="https://www.salt.dev/sv-SE" className="footer-school-name">
+        Salt JFS Fall 2022
       </Footer.Link>
     </Footer.LinkGroup>
   </Footer>
