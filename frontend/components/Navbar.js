@@ -60,7 +60,7 @@ const NavBar = () => {
     router.push(`/gallery?location=${location}&service=${service}`);
   };
 
-  console.log(location);
+  if (!isLoaded) { return <div> Loading.... </div>; }
 
   return (
     <Navbar
@@ -68,7 +68,7 @@ const NavBar = () => {
       rounded
       className="navContainer">
 
-      <div className={styles.navLogo}>
+      <div className={styles.navlogo}>
         <Link href="/">
           <Image src="/HireMeLogo.png" width={120} height={120} alt="hire me logo" />
         </Link>

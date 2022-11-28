@@ -21,6 +21,8 @@
 
 .proGallery {
   margin-top: 0;
+  display: grid;
+  gap: 2em;
 }
 
 .mapContainer {
