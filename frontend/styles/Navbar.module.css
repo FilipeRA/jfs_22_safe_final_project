@@ -128,10 +128,15 @@
     align-items: center !important;
     justify-content: center !important;
   }
-  .navLinks li {
+
+  .navLinks > li {
     display: flex !important;
-    padding: 20px;
+    padding: 10px;
   }
+
+  /* .navLinks li a {
+    padding: 20px;
+  } */
 
   .bottomNav {
     display: none;
