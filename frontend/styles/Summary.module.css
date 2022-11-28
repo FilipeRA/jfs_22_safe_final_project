@@ -9,4 +9,6 @@
 
 .summary {
   height: 100vh;
+  background-color: white;
+  padding-top: 20px;
 }

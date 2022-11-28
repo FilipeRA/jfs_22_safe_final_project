@@ -36,7 +36,6 @@ const Summary = () => {
           <link rel="icon" href="/HireMeHead.png" />
         </Head>
         <main className={styles.summary}>
-          <h1>SUMMARY</h1>
           <div className={styles.invoiceContainer}>
             <h2>
               Professional:

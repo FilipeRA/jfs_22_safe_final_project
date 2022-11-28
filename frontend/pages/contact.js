@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import styles from '../styles/Contact.module.css';
 import navStyles from '../styles/Navbar.module.css';
 
-const contact = () => {
+const Contact = () => {
   const { data: session } = useSession();
 
   return (
@@ -20,7 +20,7 @@ const contact = () => {
         <link rel="icon" href="/HireMeHead.png" />
       </Head>
 
-      <main>
+      <main className={styles.contactMain}>
         <div className="flex flex-row flex-wrap justify-center">
           <div className={styles.contact}>
             <Card imgSrc="shalihin.jpeg">
@@ -154,4 +154,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;

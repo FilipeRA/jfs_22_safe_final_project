@@ -86,7 +86,7 @@ const Details = ({ professionals }) => {
       <main className={styles.specificPro}>
         <Card className={styles.latestCustomers}>
           <div className="flex flex-col items-center pb-10">
-            <Image src={professionals.professionalImage} width={300} height={300} className="mb-3 rounded-full shadow-lg" alt="test" />
+            <Image src={professionals.professionalImage} width={200} height={200} className="mb-3 rounded-full shadow-lg" alt="test" />
             <h5 className="mb-1 mt-1 text-xl font-medium text-gray-900 dark:text-white">
               {professionals.professionalName}
             </h5>
