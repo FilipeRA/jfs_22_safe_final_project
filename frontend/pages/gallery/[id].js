@@ -5,7 +5,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, useSession, signOut } from 'next-auth/react';
 import {
   Button, Card, Navbar, Dropdown,
   Avatar,
@@ -14,6 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../styles/Details.module.css';
 import navStyles from '../../styles/Navbar.module.css';
+import Footer from '../../components/Footer';
 
 // eslint-disable-next-line max-len
 // The reason for doing this get static path props function is to first tell next how many html pages needs to be made based on our data.
@@ -82,7 +83,7 @@ const Details = ({ professionals }) => {
         <meta name="keywords" content="professional" />
         <link rel="icon" href="/HireMeHead.png" />
       </Head>
-      <main>
+      <main className={styles.specificPro}>
         <Card className={styles.latestCustomers}>
           <div className="flex flex-col items-center pb-10">
             <Image src={professionals.professionalImage} width={300} height={300} className="mb-3 rounded-full shadow-lg" alt="test" />
@@ -199,6 +200,9 @@ const Details = ({ professionals }) => {
           ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
         </div>
       </nav>
+      <div className={navStyles.bottomFooter}>
+        <Footer />
+      </div>
     </>
   );
 };

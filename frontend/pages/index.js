@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 import Link from 'next/link';
 import { signIn, useSession, signOut } from 'next-auth/react';
-import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+import { useJsApiLoader } from '@react-google-maps/api';
 import Footer from '../components/Footer';
 import styles from '../styles/Home.module.css';
 import navStyles from '../styles/Navbar.module.css';

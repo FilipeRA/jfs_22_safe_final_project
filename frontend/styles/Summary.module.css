@@ -1,8 +1,12 @@
-.invoiceContainer{
+.invoiceContainer {
   width: 250px;
   height: 250px;
   color: black;
   background-color: white;
   border-radius: 25px;
   margin: auto;
+}
+
+.summary {
+  height: 100vh;
 }

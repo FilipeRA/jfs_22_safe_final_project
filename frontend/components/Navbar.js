@@ -112,8 +112,7 @@ const NavBar = () => {
       <div className={styles.navLinks}>
         {/* <Navbar.Collapse className="nav-links"> */}
         <Navbar.Link
-          href="/"
-          active>
+          href="/">
           Home
         </Navbar.Link>
         <Navbar.Link href="/about">

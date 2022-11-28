@@ -82,6 +82,9 @@ const About = () => {
           ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
         </div>
       </nav>
+      <div className={navStyles.bottomFooter}>
+        <Footer />
+      </div>
     </div>
 
   );
