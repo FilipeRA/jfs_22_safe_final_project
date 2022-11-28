@@ -27,8 +27,6 @@ const Summary = () => {
     }
   }, [session]);
 
-  console.log(lastUserHistory.professionalId);
-
   if (status === 'authenticated') {
     return (
       <div>

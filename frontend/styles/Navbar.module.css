@@ -46,10 +46,6 @@
   margin: 0 10px 0 10px;
 }
 
-.bottomNavLinks li a {
-  /* color: white !important; */
-}
-
 .bottomNavProfile {
   padding: 10px;
 }
@@ -135,10 +131,6 @@
   .navLinks li {
     display: flex !important;
     padding: 20px;
-  }
-
-  .navLinks a {
-    /* color: white !important; */
   }
 
   .bottomNav {

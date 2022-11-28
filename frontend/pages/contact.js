@@ -56,7 +56,7 @@ const Contact = () => {
               </h5>
               <p>
                 {' '}
-                I'm a very curious person,
+                I am a very curious person,
                 passionate about technologie
                 in general and problem solving.
                 I find satisafaction in
