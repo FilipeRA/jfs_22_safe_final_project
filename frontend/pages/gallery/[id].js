@@ -7,8 +7,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import {
-  Button, Card, Navbar, Dropdown,
-  Avatar,
+  Button, Card, Navbar, Dropdown, Avatar, Rating,
 } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -91,11 +90,18 @@ const Details = ({ professionals }) => {
               {professionals.professionalName}
             </h5>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {professionals.professionalAddress}
+              {`${professionals.professionalAddress.split(' ')[0]}, ${professionals.professionalAddress.split(' ')[professionals.professionalAddress.split(' ').length - 1]}`}
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400 flex">
-              <Image src="/star.png" width={20} height={20} alt="star rating" />
-              {professionals.professionalRating}
+              <Rating>
+                <Rating.Star />
+                <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
+                  {professionals.professionalRating}
+                </p>
+                <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
+              </Rating>
+              {/* <Image src="/star.png" width={20} height={20} alt="star rating" />
+              {professionals.professionalRating} */}
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400">
               {professionals.professionalPrice}

@@ -4,9 +4,8 @@ import { useLoadScript } from '@react-google-maps/api';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import {
-  Card, Dropdown, Button, Navbar, Avatar,
+  Card, Dropdown, Button, Navbar, Avatar, Rating,
 } from 'flowbite-react';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import Map from '../../components/Map';
@@ -69,9 +68,16 @@ const Index = ({ professionals }) => {
                         {pro.professionalService}
                         {' '}
                         <div className="flex">
-                          <Image src="/star.png" width={20} height={20} alt="star rating" />
+                          <Rating>
+                            <Rating.Star />
+                            <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
+                              {pro.professionalRating}
+                            </p>
+                            <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
+                          </Rating>
+                          {/* <Image src="/star.png" width={20} height={20} alt="star rating" />
                           {' '}
-                          {pro.professionalRating}
+                          {pro.professionalRating} */}
                         </div>
                       </span>
                       <span className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
