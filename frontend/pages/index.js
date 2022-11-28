@@ -29,7 +29,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to
           {' '}
-          <a href="https://nextjs.org">HireMe</a>
+          <span className={styles.companyName}>HireMe</span>
         </h1>
 
         <div className={styles.description}>
@@ -50,15 +50,14 @@ export default function Home() {
       <nav className={navStyles.bottomNav}>
         <div className={navStyles.bottomNavLinks}>
           <Navbar.Link
-            href="/"
-            active>
+            href="/">
             Home
           </Navbar.Link>
           <Navbar.Link href="/about">
             About
           </Navbar.Link>
           <Navbar.Link href="/contact">
-            Contact Us
+            Contact
           </Navbar.Link>
         </div>
         <div className={navStyles.bottomNavProfile}>

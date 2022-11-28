@@ -6,9 +6,14 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { signIn, useSession } from 'next-auth/react';
-import { Button, Card } from 'flowbite-react';
+import {
+  Button, Card, Navbar, Dropdown,
+  Avatar,
+} from 'flowbite-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../../styles/Details.module.css';
+import navStyles from '../../styles/Navbar.module.css';
 
 // eslint-disable-next-line max-len
 // The reason for doing this get static path props function is to first tell next how many html pages needs to be made based on our data.
@@ -147,11 +152,6 @@ const Details = ({ professionals }) => {
                         {history.userService}
                       </p>
                     </div>
-                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                      {history.totalServicePrice}
-                      {' '}
-                      kr SEK
-                    </div>
                   </div>
                 </li>
               </ul>
@@ -159,13 +159,48 @@ const Details = ({ professionals }) => {
           ))}
         </Card>
       </main>
+      <nav className={navStyles.bottomNav}>
+        <div className={navStyles.bottomNavLinks}>
+          <Navbar.Link
+            href="/">
+            Home
+          </Navbar.Link>
+          <Navbar.Link href="/about">
+            About
+          </Navbar.Link>
+          <Navbar.Link href="/contact">
+            Contact
+          </Navbar.Link>
+        </div>
+        <div className={navStyles.bottomNavProfile}>
+          {session ? (
+            <div className="flex md:order-2">
+              <Dropdown
+                arrowIcon={false}
+                inline
+                label={<Avatar alt="User settings" img={session.user.image} rounded />}>
+                <Dropdown.Header>
+                  <span className="block text-sm">
+                    {session.user.name}
+                  </span>
+                  <span className="block truncate text-sm font-medium">
+                    {session.user.email}
+                  </span>
+                </Dropdown.Header>
+                <Dropdown.Item>
+                  <Link href="/account">My Account</Link>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={() => signOut()}>
+                  Sign out
+                </Dropdown.Item>
+              </Dropdown>
+            </div>
+          ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
+        </div>
+      </nav>
     </>
   );
 };
 
 export default Details;
-
-// <div key={history.historyId}>
-//   <p>{history.userName}</p>
-//   <p>{history.userService}</p>
-// </div>

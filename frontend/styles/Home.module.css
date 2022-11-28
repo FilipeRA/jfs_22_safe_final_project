@@ -11,6 +11,10 @@
   padding-bottom: 50px;
 }
 
+.companyName {
+  color: #01baef;
+}
+
 .footer {
   display: flex;
   flex: 1;

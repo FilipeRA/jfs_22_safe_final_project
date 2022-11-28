@@ -76,12 +76,12 @@ const Map = ({ professionals, inputLocation }) => {
             position={coord} /> */}
           <Link key={professionals[i].id} href={`/gallery/${professionals[i].id}`}>
             <InfoWindow
-              key={professionals[i].id}
+              // key={professionals[i].id}
               position={coord}
               className="try1">
               <div className={styles.infoWindow}>
                 <Avatar
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  img={professionals[i].professionalImage}
                   rounded>
                   <div className="space-y-1 font-medium dark:text-white">
                     <div>

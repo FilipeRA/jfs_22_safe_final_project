@@ -14,7 +14,7 @@ const contact = () => (
     </Head>
 
     <main>
-      <div className="flex flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap justify-center">
         <div className={styles.contact}>
           <Card imgSrc="shalihin.jpeg">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

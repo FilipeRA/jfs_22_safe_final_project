@@ -2,9 +2,18 @@
   display: none;
 }
 
+.navLinks {
+  display: none;
+}
+
+.navContainer {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .navContainer > div {
   background-color: #fbfbff !important;
-  border-bottom: 1px solid #eaeaea;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -14,11 +23,11 @@
 }
 
 .bottomNav {
-  background-color: pink;
   display: flex;
   align-items: center !important;
   justify-content: center !important;
-  position: fixed;
+  position: sticky;
+  background-color: #fbfbff;
   bottom: 0;
   z-index: 1;
   right: 0;
@@ -26,19 +35,19 @@
 }
 
 .bottomNavLinks {
-  background-color: blue !important;
+  /* background-color: blue !important; */
   display: flex;
   list-style-type: none !important;
   padding: 10px;
 }
 
 .bottomNavLinks li {
-  color: white !important;
+  /* color: white !important; */
   margin: 0 10px 0 10px;
 }
 
 .bottomNavLinks li a {
-  color: white !important;
+  /* color: white !important; */
 }
 
 .bottomNavProfile {
@@ -118,13 +127,13 @@
   } */
 
   .navLinks {
-    background-color: pink !important;
+    /* background-color: pink !important; */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
   .navLinks li {
-    background-color: blue;
+    /* background-color: blue; */
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -132,7 +141,7 @@
   }
 
   .navLinks a {
-    color: white !important;
+    /* color: white !important; */
   }
 
   .bottomNav {

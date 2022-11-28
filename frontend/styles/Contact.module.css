@@ -38,13 +38,24 @@
   /* height: 100vh; */
   justify-content: center;
   align-items: center;
+  height: 10px;
 }
 
 .contact {
-  max-width: 400px;
+  max-width: 350px;
+  min-height: 450px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  /* justify-content: space-between; */
+  margin-left: 40px;
   /* width: 50vh; */
   /* justify-content: flex-start;
   align-items: flex-start; */
+}
+
+.contact > div {
+  justify-content: center;
 }
 
 /* .contact2 {
