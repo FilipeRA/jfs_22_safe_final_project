@@ -18,6 +18,7 @@ public class Professional {
     private String professionalService;
     private String professionalRating;
     private long professionalPrice;
+    private String professionalImage;
     private List<ProfessionalHistory> professionalHistory = new ArrayList<>();
 
 
@@ -28,6 +29,15 @@ public class Professional {
         this.professionalName = professionalName;
         this.professionalAddress = professionalAddress;
         this.professionalService = professionalService;
+    }
+
+    public Professional(String professionalName, String professionalAddress, String professionalService, String professionalRating, long professionalPrice, String professionalImage) {
+        this.professionalName = professionalName;
+        this.professionalAddress = professionalAddress;
+        this.professionalService = professionalService;
+        this.professionalRating = professionalRating;
+        this.professionalPrice = professionalPrice;
+        this.professionalImage = professionalImage;
     }
 
     public Professional(String professionalName, String professionalAddress, String professionalService, String professionalRating, long professionalPrice) {
@@ -56,6 +66,8 @@ public class Professional {
         this.professionalPrice = professionalPrice;
         this.professionalHistory = professionalHistory;
     }
+
+
 
     public String getId() {
         return id;
@@ -113,6 +125,15 @@ public class Professional {
         this.professionalHistory = professionalHistory;
     }
 
+    public String getProfessionalImage() {
+        return professionalImage;
+    }
+
+    public void setProfessionalImage(String professionalImage) {
+        this.professionalImage = professionalImage;
+    }
+
+
     @Override
     public String toString() {
         return "Professional{" +
@@ -122,6 +143,7 @@ public class Professional {
                 ", professionalService='" + professionalService + '\'' +
                 ", professionalRating='" + professionalRating + '\'' +
                 ", professionalPrice=" + professionalPrice +
+                ", professionalImage='" + professionalImage + '\'' +
                 ", professionalHistory=" + professionalHistory +
                 '}';
     }

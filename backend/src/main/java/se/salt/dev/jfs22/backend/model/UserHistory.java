@@ -8,6 +8,7 @@ public class UserHistory {
     private String professionalName;
     private String professionalService;
     private long totalServicePrice;
+    private String professionalImage;
 
     public UserHistory() {
     }
@@ -25,6 +26,23 @@ public class UserHistory {
         this.professionalName = professionalName;
         this.professionalService = professionalService;
         this.totalServicePrice = totalServicePrice;
+    }
+
+    public UserHistory(String professionalId, String professionalName, String professionalService, long totalServicePrice, String professionalImage) {
+        this.professionalId = professionalId;
+        this.professionalName = professionalName;
+        this.professionalService = professionalService;
+        this.totalServicePrice = totalServicePrice;
+        this.professionalImage = professionalImage;
+    }
+
+    public UserHistory(String historyId, String professionalId, String professionalName, String professionalService, long totalServicePrice, String professionalImage) {
+        this.historyId = historyId;
+        this.professionalId = professionalId;
+        this.professionalName = professionalName;
+        this.professionalService = professionalService;
+        this.totalServicePrice = totalServicePrice;
+        this.professionalImage = professionalImage;
     }
 
     public String getHistoryId() {
@@ -67,6 +85,14 @@ public class UserHistory {
         this.totalServicePrice = totalServicePrice;
     }
 
+    public String getProfessionalImage() {
+        return professionalImage;
+    }
+
+    public void setProfessionalImage(String professionalImage) {
+        this.professionalImage = professionalImage;
+    }
+
     @Override
     public String toString() {
         return "UserHistory{" +
@@ -75,6 +101,7 @@ public class UserHistory {
                 ", professionalName='" + professionalName + '\'' +
                 ", professionalService='" + professionalService + '\'' +
                 ", totalServicePrice=" + totalServicePrice +
+                ", professionalImage='" + professionalImage + '\'' +
                 '}';
     }
 }

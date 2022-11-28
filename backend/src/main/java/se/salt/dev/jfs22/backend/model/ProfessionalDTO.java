@@ -5,6 +5,7 @@ public record ProfessionalDTO (
         String professionalAddress,
         String professionalRating,
         String professionalService,
-        long professionalPrice
+        long professionalPrice,
+        String professionalImage
 ){
 }

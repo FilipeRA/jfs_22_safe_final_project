@@ -35,14 +35,6 @@ a {
   }
 }
 
-.navContainer {
-  background-color: #fbfbff;
-  border-bottom: 1px solid #eaeaea;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
 .body-container {
   min-height: 100vh;
 }
@@ -98,7 +90,3 @@ a {
 .accountProfile {
   width: 50px;
 }
-
-/* main {
-  background-color: black !important;
-} */

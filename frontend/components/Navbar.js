@@ -66,7 +66,7 @@ const NavBar = () => {
     <Navbar
       fluid
       rounded
-      className="navContainer">
+      className={styles.navContainer}>
 
       <div className={styles.navlogo}>
         <Link href="/">
@@ -109,7 +109,8 @@ const NavBar = () => {
         </form>
       </div>
 
-      <Navbar.Collapse className="nav-links">
+      <div className={styles.navLinks}>
+        {/* <Navbar.Collapse className="nav-links"> */}
         <Navbar.Link
           href="/"
           active>
@@ -121,34 +122,34 @@ const NavBar = () => {
         <Navbar.Link href="/contact">
           Contact Us
         </Navbar.Link>
-      </Navbar.Collapse>
-
-      <div className={styles.navProfile}>
-        {session ? (
-          <div className="flex md:order-2">
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={<Avatar alt="User settings" img={session.user.image} rounded />}>
-              <Dropdown.Header>
-                <span className="block text-sm">
-                  {session.user.name}
-                </span>
-                <span className="block truncate text-sm font-medium">
-                  {session.user.email}
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Item>
-                <Link href="/account">My Account</Link>
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={() => signOut()}>
-                Sign out
-              </Dropdown.Item>
-            </Dropdown>
-            <Navbar.Toggle />
-          </div>
-        ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
+        {/* </Navbar.Collapse> */}
+        <div className={styles.navProfile}>
+          {session ? (
+            <div className="flex md:order-2">
+              <Dropdown
+                arrowIcon={false}
+                inline
+                label={<Avatar alt="User settings" img={session.user.image} rounded />}>
+                <Dropdown.Header>
+                  <span className="block text-sm">
+                    {session.user.name}
+                  </span>
+                  <span className="block truncate text-sm font-medium">
+                    {session.user.email}
+                  </span>
+                </Dropdown.Header>
+                <Dropdown.Item>
+                  <Link href="/account">My Account</Link>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={() => signOut()}>
+                  Sign out
+                </Dropdown.Item>
+              </Dropdown>
+              <Navbar.Toggle />
+            </div>
+          ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
+        </div>
       </div>
 
     </Navbar>

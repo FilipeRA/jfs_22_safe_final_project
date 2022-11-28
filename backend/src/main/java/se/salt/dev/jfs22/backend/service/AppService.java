@@ -23,7 +23,8 @@ public class AppService {
                 professionalDTO.professionalAddress(),
                 professionalDTO.professionalService(),
                 professionalDTO.professionalRating(),
-                professionalDTO.professionalPrice()
+                professionalDTO.professionalPrice(),
+                professionalDTO.professionalImage()
         );
         return proRepo.save(newProfessional);
     }
@@ -52,7 +53,8 @@ public class AppService {
                             userHistory.getProfessionalId(),
                             userHistory.getProfessionalName(),
                             userHistory.getProfessionalService(),
-                            userHistory.getTotalServicePrice()))
+                            userHistory.getTotalServicePrice(),
+                            userHistory.getProfessionalImage()))
                     .toList();
 
             UserResDTO userResDTO = new UserResDTO(
@@ -76,7 +78,8 @@ public class AppService {
                         userHistory.getProfessionalId(),
                         userHistory.getProfessionalName(),
                         userHistory.getProfessionalService(),
-                        userHistory.getTotalServicePrice()))
+                        userHistory.getTotalServicePrice(),
+                        userHistory.getProfessionalImage()))
                 .toList();
 
         return new UserResDTO(
@@ -103,13 +106,13 @@ public class AppService {
                 userHistoryDTO.professionalId(),
                 userHistoryDTO.professionalName(),
                 userHistoryDTO.professionalService(),
-                userHistoryDTO.totalServicePrice()
+                userHistoryDTO.totalServicePrice(),
+                userHistoryDTO.professionalImage()
         );
 
         UserHistory savedUserHistory = userRepo.updateUserHistoryByEmail(userEmail, userHistory);
 
         User updatedUser = userRepo.findUserByEmail(userEmail);
-        System.out.println(updatedUser);
 
         ProfessionalHistory proHistory = new ProfessionalHistory(
                 updatedUser.getId(),

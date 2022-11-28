@@ -6,6 +6,7 @@ public record UserHistoryDTO(
         String professionalId,
         String professionalName,
         String professionalService,
-        long totalServicePrice
+        long totalServicePrice,
+        String professionalImage
 ) {
 }
