@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import {
-  Label, TextInput, Button, Checkbox, Select,
+  Label, TextInput, Button, Select, Navbar, Avatar, Dropdown,
 } from 'flowbite-react';
+import Link from 'next/link';
 import styles from '../styles/EditAccount.module.css';
+import navStyles from '../styles/Navbar.module.css';
+import Footer from '../components/Footer';
 
+// eslint-disable-next-line consistent-return
 const EditAccount = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -53,94 +57,137 @@ const EditAccount = () => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-
-    console.log(userAddress);
     router.push('/account');
   };
 
   if (status === 'authenticated') {
     return (
-      <div className={styles.changeAddressForm}>
-        <form className="flex flex-col gap-4">
-          <div>
-            <div className="mb-2 block">
-              <Label
-                htmlFor="name1"
-                value="Your name" />
+      <div>
+        <main className={styles.changeAddressForm}>
+          <form className="flex flex-col gap-4">
+            <div>
+              <div className="mb-2 block">
+                <Label
+                  htmlFor="name1"
+                  value="Your name" />
+              </div>
+              <TextInput
+                id="name1"
+                type="text"
+                placeholder={user.userName}
+                disabled />
             </div>
-            <TextInput
-              id="name1"
-              type="text"
-              placeholder={user.userName}
-              disabled />
-          </div>
-          <div>
-            <div className="mb-2 block">
-              <Label
-                htmlFor="email1"
-                value="Your email" />
+            <div>
+              <div className="mb-2 block">
+                <Label
+                  htmlFor="email1"
+                  value="Your email" />
+              </div>
+              <TextInput
+                id="email1"
+                type="email"
+                placeholder={user.userEmail}
+                disabled />
             </div>
-            <TextInput
-              id="email1"
-              type="email"
-              placeholder={user.userEmail}
-              disabled />
-          </div>
-          <div>
-            <div className="mb-2 block">
-              <Label
-                htmlFor="address1"
-                value="Address" />
+            <div>
+              <div className="mb-2 block">
+                <Label
+                  htmlFor="address1"
+                  value="Address" />
+              </div>
+              <TextInput
+                id="address1"
+                type="text"
+                onChange={handleAddressChange}
+                required />
             </div>
-            <TextInput
-              id="address1"
-              type="text"
-              onChange={handleAddressChange}
-              required />
-          </div>
-          <div>
-            <div className="mb-2 block">
-              <Label
-                htmlFor="postCode1"
-                value="Post Code" />
+            <div>
+              <div className="mb-2 block">
+                <Label
+                  htmlFor="postCode1"
+                  value="Post Code" />
+              </div>
+              <TextInput
+                id="postCode1"
+                type="text"
+                onChange={handlePostCodeChange}
+                required />
             </div>
-            <TextInput
-              id="postCode1"
-              type="text"
-              onChange={handlePostCodeChange}
-              required />
-          </div>
-          <div id="select">
-            <div className="mb-2 block">
-              <Label
-                htmlFor="countries"
-                value="Select your country" />
+            <div id="select">
+              <div className="mb-2 block">
+                <Label
+                  htmlFor="countries"
+                  value="Select your country" />
+              </div>
+              <Select
+                id="countries"
+                onChange={handleCountryChange}
+                required>
+                <option selected>
+                  Choose a country
+                </option>
+                <option>
+                  Sweden
+                </option>
+                <option>
+                  Norway
+                </option>
+                <option>
+                  Denmark
+                </option>
+                <option>
+                  Finland
+                </option>
+              </Select>
             </div>
-            <Select
-              id="countries"
-              onChange={handleCountryChange}
-              required>
-              <option selected>
-                Choose a country
-              </option>
-              <option>
-                Sweden
-              </option>
-              <option>
-                Norway
-              </option>
-              <option>
-                Denmark
-              </option>
-              <option>
-                Finland
-              </option>
-            </Select>
+            <Button type="submit" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </form>
+        </main>
+        <nav className={navStyles.bottomNav}>
+          <div className={navStyles.bottomNavLinks}>
+            <Navbar.Link
+              href="/">
+              Home
+            </Navbar.Link>
+            <Navbar.Link href="/about">
+              About
+            </Navbar.Link>
+            <Navbar.Link href="/contact">
+              Contact
+            </Navbar.Link>
           </div>
-          <Button type="submit" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </form>
+          <div className={navStyles.bottomNavProfile}>
+            {session ? (
+              <div className="flex md:order-2">
+                <Dropdown
+                  arrowIcon={false}
+                  inline
+                  label={<Avatar alt="User settings" img={session.user.image} rounded />}>
+                  <Dropdown.Header>
+                    <span className="block text-sm">
+                      {session.user.name}
+                    </span>
+                    <span className="block truncate text-sm font-medium">
+                      {session.user.email}
+                    </span>
+                  </Dropdown.Header>
+                  <Dropdown.Item>
+                    <Link href="/account">My Account</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={() => signOut()}>
+                    Sign out
+                  </Dropdown.Item>
+                </Dropdown>
+              </div>
+            ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
+          </div>
+        </nav>
+        <div className={navStyles.bottomFooter}>
+          <Footer />
+        </div>
       </div>
     );
   }
