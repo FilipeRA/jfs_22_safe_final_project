@@ -80,7 +80,7 @@ const Index = ({ professionals }) => {
                         SEK / hour
                       </span>
                       <span className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                        {pro.professionalAddress}
+                        {`${pro.professionalAddress.split(' ')[0]}, ${pro.professionalAddress.split(' ')[pro.professionalAddress.split(' ').length - 1]}`}
                       </span>
                       <div className="mt-4 flex space-x-3 lg:mt-6 justify-center">
                         <Link
