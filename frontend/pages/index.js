@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
+import Image from 'next/image';
 import Footer from '../components/Footer';
 import styles from '../styles/Home.module.css';
 
@@ -13,14 +14,24 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <img src="https://www.lewispies.co.uk/wp-content/uploads/2020/08/web-top-jobs10-tzr-780x501-1.jpg" alt="landing-page" />
-        An intersection between your needs and their skills
-        {' '}
-        <br />
-        Skilled professionals at your fingertips
-        {' '}
-        <br />
-        Your needs...their skills
+        <h1 className={styles.title}>
+          Welcome to
+          {' '}
+          <a href="https://nextjs.org">Hire Me</a>
+        </h1>
+
+        <div className={styles.description}>
+          <h2>
+            {/* An intersection between your needs and their skills
+            {' '}
+            <br /> */}
+            Skilled professionals at your fingertips
+            {' '}
+            {/* <br />
+            Your needs...their skills */}
+          </h2>
+        </div>
+        <Image src="/landingImage.jpeg" alt="landing" width={800} height={800} />
 
       </main>
       <Footer />

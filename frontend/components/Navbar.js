@@ -60,6 +60,8 @@ const NavBar = () => {
     router.push(`/gallery?location=${location}&service=${service}`);
   };
 
+  console.log(location);
+
   return (
     <Navbar
       fluid
@@ -107,6 +109,20 @@ const NavBar = () => {
         </form>
       </div>
 
+      <Navbar.Collapse className="nav-links">
+        <Navbar.Link
+          href="/"
+          active>
+          Home
+        </Navbar.Link>
+        <Navbar.Link href="/about">
+          About
+        </Navbar.Link>
+        <Navbar.Link href="/contact">
+          Contact Us
+        </Navbar.Link>
+      </Navbar.Collapse>
+
       <div className={styles.navProfile}>
         {session ? (
           <div className="flex md:order-2">
@@ -134,20 +150,6 @@ const NavBar = () => {
           </div>
         ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
       </div>
-
-      <Navbar.Collapse className="nav-links">
-        <Navbar.Link
-          href="/"
-          active>
-          Home
-        </Navbar.Link>
-        <Navbar.Link href="/about">
-          About
-        </Navbar.Link>
-        <Navbar.Link href="/contact">
-          Contact Us
-        </Navbar.Link>
-      </Navbar.Collapse>
 
     </Navbar>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import {
   GoogleMap, Marker, InfoWindow, InfoBox,
@@ -50,6 +51,12 @@ const Map = ({ professionals, inputLocation }) => {
   return (
     <GoogleMap
       zoom={13}
+      options={{
+        zoomControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: false,
+      }}
       center={centerCoords[0]}
       mapContainerClassName={styles.mapContainer}>
       {/* <Marker position={centerCoords[0]} icon="/youAreHere.png" /> */}
