@@ -38,7 +38,7 @@ const Contact = () => {
               </div>
 
               <p>
-                I'm a young professional from Singapore who brings
+                I&apos;m a young professional from Singapore who brings
                 eagerness and passion to thrive as a developer, with a
                 willingness to go the extra mile in challenging
                 situations. Dependability and logical thinking are my
@@ -69,7 +69,7 @@ const Contact = () => {
                 </p>
               </div>
               <p>
-                I'm a very curious person,
+                I&apos;m a very curious person,
                 passionate about technology
                 in general and problem solving.
                 I find satisafaction in
@@ -105,7 +105,7 @@ const Contact = () => {
               </div>
               <p>
                 {' '}
-                I’m a Portuguese-Swede living in Stockholm,
+                I&apos;m a Portuguese-Swede living in Stockholm,
                 passionate about learning and solving complex
                 problems. Coding is the realized outlet
                 of these passions.
