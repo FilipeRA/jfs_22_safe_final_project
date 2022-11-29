@@ -5,6 +5,7 @@ import {
 } from 'flowbite-react';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Footer from '../components/Footer';
 import styles from '../styles/About.module.css';
 import navStyles from '../styles/Navbar.module.css';
@@ -26,11 +27,19 @@ const About = () => {
           </h5>
           <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
             <li>Next.JS 13</li>
-            <li>Google authentication</li>
+            <Image src="/nextjs.png" width={50} height={50} alt="pic" />
             <li>Google Map API</li>
+            <Image src="/googlemaps.png" width={50} height={50} alt="pic" />
             <li>Spring Boot</li>
+            <Image src="/spring.svg" width={50} height={50} alt="pic" />
             <li>MongoDB</li>
+            <Image src="/mongo.png" width={50} height={50} alt="pic" />
             <li>Deployed to Azure</li>
+            <Image src="/azure.png" width={50} height={50} alt="pic" />
+            <Image src="/javascript.png" width={50} height={50} alt="pic" />
+            <Image src="/css.png" width={50} height={50} alt="pic" />
+            <Image src="/node.png" width={50} height={50} alt="pic" />
+            <Image src="/java.png" width={50} height={50} alt="pic" />
           </ul>
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             How we could further develop the app:
