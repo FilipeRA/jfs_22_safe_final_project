@@ -1,7 +1,5 @@
 .mainContainer {
   display: flex;
-  /* width: 80vh; */
-  /* height: 100vh; */
   justify-content: center;
   align-items: center;
   height: 10px;
@@ -18,6 +16,7 @@
 
 .contactMain {
   background-color: white;
+  height: 265vh;
 }
 
 .logoLinks {
@@ -36,5 +35,22 @@
 
 .logoLinks a:hover {
   transform: scale(0.93);
+}
 
+@media screen and (min-width: 480px) {
+  .contactMain {
+    height: 265vh;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contactMain {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contactMain {
+    height: 100vh;
+  }
 }
