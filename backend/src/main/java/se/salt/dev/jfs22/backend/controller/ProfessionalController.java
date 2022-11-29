@@ -24,7 +24,7 @@ public class ProfessionalController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Professional> getSpecificRecipe(@PathVariable String id) {
+    ResponseEntity<Professional> getSpecificProfessional(@PathVariable String id) {
         Professional specificProfessional = service.getSpecificProfessional(id);
         return ResponseEntity.ok(specificProfessional);
     }

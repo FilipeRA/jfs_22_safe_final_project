@@ -103,7 +103,7 @@ const NavBar = () => {
                 required />
             </Autocomplete>
           </div>
-          <Button className="Submit-btn" type="submit" color="cyan" onClick={handleSubmit}>
+          <Button className="submitBtn" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </form>
@@ -119,7 +119,7 @@ const NavBar = () => {
           About
         </Navbar.Link>
         <Navbar.Link href="/contact">
-          Contact Us
+          Contact
         </Navbar.Link>
         {/* </Navbar.Collapse> */}
         <div className={styles.navProfile}>

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import {
-  GoogleMap, Marker, InfoWindow, InfoBox,
+  GoogleMap, InfoWindow,
 } from '@react-google-maps/api';
 import Geocode from 'react-geocode';
 import { Avatar } from 'flowbite-react';
@@ -59,7 +59,7 @@ const Map = ({ professionals, inputLocation }) => {
       }}
       center={centerCoords[0]}
       mapContainerClassName={styles.mapContainer}>
-      {/* <Marker position={centerCoords[0]} icon="/youAreHere.png" /> */}
+
       {coords.map((coord, i) => (
         <>
           {/* <Marker

@@ -45,7 +45,8 @@ public class AppService {
         if (userRepo.findUserByEmail(userDTO.userEmail()) == null) {
             User newUser = new User(
                     userDTO.userName(),
-                    userDTO.userEmail());
+                    userDTO.userEmail(),
+                    userDTO.userImage());
             User createdUser = userRepo.save(newUser);
 
             List<UserHistory> userHistories = createdUser.getUserHistory().stream()
@@ -98,7 +99,8 @@ public class AppService {
         if (userRepo.findUserByEmail(userEmail) == null) {
             User newUser = new User(
                     userHistoryDTO.userName(),
-                    userHistoryDTO.userEmail());
+                    userHistoryDTO.userEmail(),
+                    userHistoryDTO.userImage());
             userRepo.save(newUser);
         }
 
@@ -117,12 +119,11 @@ public class AppService {
         ProfessionalHistory proHistory = new ProfessionalHistory(
                 updatedUser.getId(),
                 updatedUser.getUserName(),
-                savedUserHistory.getProfessionalService()
+                savedUserHistory.getProfessionalService(),
+                updatedUser.getUserImage()
         );
 
         Professional pro = proRepo.updateProfessionalHistoryByProfessionalId(userHistory.getProfessionalId(), proHistory);
-
-        System.out.println(pro);
 
         return savedUserHistory;
     }

@@ -28,6 +28,12 @@ public class User {
         this.userEmail = userEmail;
     }
 
+    public User(String userName, String userEmail, String userImage) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userImage = userImage;
+    }
+
     public User(String userName, String userEmail, String userAddress, int userRating, String userImage, List<UserHistory> userHistory) {
         this.userName = userName;
         this.userEmail = userEmail;

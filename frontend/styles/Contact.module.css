@@ -19,3 +19,22 @@
 .contactMain {
   background-color: white;
 }
+
+.logoLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoLinks a {
+  padding: 10px;
+  padding: 0 10px 0 10px;
+  align-self: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.logoLinks a:hover {
+  transform: scale(0.93);
+
+}

@@ -25,26 +25,21 @@ const About = () => {
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Tech Stack used:
           </h5>
-          <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
-            <li>Next.JS 13</li>
+          <div className={styles.techStack}>
             <Image src="/nextjs.png" width={50} height={50} alt="pic" />
-            <li>Google Map API</li>
             <Image src="/googlemaps.png" width={50} height={50} alt="pic" />
-            <li>Spring Boot</li>
             <Image src="/spring.svg" width={50} height={50} alt="pic" />
-            <li>MongoDB</li>
             <Image src="/mongo.png" width={50} height={50} alt="pic" />
-            <li>Deployed to Azure</li>
             <Image src="/azure.png" width={50} height={50} alt="pic" />
             <Image src="/javascript.png" width={50} height={50} alt="pic" />
             <Image src="/css.png" width={50} height={50} alt="pic" />
             <Image src="/node.png" width={50} height={50} alt="pic" />
             <Image src="/java.png" width={50} height={50} alt="pic" />
-          </ul>
+          </div>
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             How we could further develop the app:
           </h5>
-          <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
+          <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400 text-center ml-2">
             <li>Add calendar functionality</li>
             <li>Add chat functionality between user and professional</li>
             <li>Add payment functionality</li>

@@ -7,6 +7,7 @@ public class ProfessionalHistory {
     private String userId;
     private String userName;
     private String userService;
+    private String userImage;
 
     public ProfessionalHistory() {
     }
@@ -15,6 +16,13 @@ public class ProfessionalHistory {
         this.userId = userId;
         this.userName = userName;
         this.userService = userService;
+    }
+
+    public ProfessionalHistory(String userId, String userName, String userService, String userImage) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userService = userService;
+        this.userImage = userImage;
     }
 
     public String getHistoryId() {
@@ -47,6 +55,14 @@ public class ProfessionalHistory {
 
     public void setUserService(String userService) {
         this.userService = userService;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
     @Override

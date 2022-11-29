@@ -40,6 +40,7 @@ const Account = () => {
       const user = {
         userName: session.user.name,
         userEmail: session.user.email,
+        userImage: session.user.image,
       };
 
       fetch('http://localhost:8080/api/users/', {
@@ -53,6 +54,8 @@ const Account = () => {
         .then(res => setDatabaseData(res));
     }
   }, [session]);
+
+  console.log(session);
 
   if (status === 'authenticated') {
     return (

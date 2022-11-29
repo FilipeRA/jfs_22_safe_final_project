@@ -20,10 +20,6 @@ a {
   box-sizing: border-box;
 }
 
-.Submit-btn {
-  color: #fbfbff;
-  background-color: #0b4f6c;
-}
 
 @media (prefers-color-scheme: dark) {
   /* html {
@@ -37,6 +33,11 @@ a {
 
 .body-container {
   min-height: 100vh;
+}
+
+.submitBtn {
+  color: #fbfbff;
+  /* background-color: #0b4f6c; */
 }
 
 .footer-container {

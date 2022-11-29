@@ -4,6 +4,7 @@ import {
   Card, Navbar, Dropdown, Avatar,
 } from 'flowbite-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import Footer from '../components/Footer';
 import styles from '../styles/Contact.module.css';
@@ -27,53 +28,65 @@ const Contact = () => {
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Shalihin Ahmad
               </h5>
-              <p>
-                {' '}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit qui et aliquid vel soluta eum veniam.
-                Consequatur nam recusandae magni reiciendis,
-                minus sed quas repudiandae ad aspernatur repellat perspiciatis saepe.
-                {' '}
+              <div>
+                <p className="font-semibold text-gray-700 dark:text-gray-400 font-">
+                  Java Fullstack Developer
+                </p>
+                <p className="text-sm text-gray-700 dark:text-gray-400">
+                  mohamad.ahmad@salt.dev
+                </p>
+              </div>
 
+              <p>
+                I'm a young professional from Singapore who brings
+                eagerness and passion to thrive as a developer, with a
+                willingness to go the extra mile in challenging
+                situations. Dependability and logical thinking are my
+                strongest traits and while in a team, no one gets left
+                behind.
               </p>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
-                Java Fullstack Developer
-                {' '}
-                <br />
-                Mohamad.Ahmad@appliedtechnology.se
-                <Link href="https://www.linkedin.com/in/arielshaka"> Shas LinkedIn</Link>
-                {' '}
-                <br />
-                <Link href="https://github.com/ArielShaka">Sha Github</Link>
-              </p>
+              <div className={styles.logoLinks}>
+                <Link href="https://www.linkedin.com/in/shalihinahmad/">
+                  <Image src="/linkedln.png" width={40} height={40} alt="pic" />
+                </Link>
+                <Link href="https://github.com/omgshalihin">
+                  <Image src="/GitHub-Mark-120px-plus.png" width={33} height={33} alt="pic" />
+                </Link>
+              </div>
             </Card>
           </div>
-
           <div className={styles.contact}>
             <Card imgSrc="ariel.jpeg">
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Ariel Shaka
               </h5>
+              <div>
+                <p className="font-semibold text-gray-700 dark:text-gray-400 font-">
+                  Java Fullstack Developer
+                </p>
+                <p className="text-sm text-gray-700 dark:text-gray-400">
+                  ariel.yumembudi@salt.dev
+                </p>
+              </div>
               <p>
-                {' '}
-                I am a very curious person,
-                passionate about technologie
+                I'm a very curious person,
+                passionate about technology
                 in general and problem solving.
                 I find satisafaction in
                 building products that would
                 have a positive impact on peoples life.
-                {' '}
+                I love being challenged and pushed to
+                think outside the box.
               </p>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
-                Java Fullstack Developer
-                {' '}
-                <br />
-                ariel.yumembudi@appliedtechnology.se
-                <Link href="https://www.linkedin.com/in/arielshaka"> LinkedIn</Link>
-                {' '}
-                <br />
-                <Link href="https://github.com/ArielShaka">Github</Link>
-              </p>
+
+              <div className={styles.logoLinks}>
+                <Link href="https://www.linkedin.com/in/arielshaka">
+                  <Image src="/linkedln.png" width={40} height={40} alt="pic" />
+                </Link>
+                <Link href="https://github.com/ArielShaka">
+                  <Image src="/GitHub-Mark-120px-plus.png" width={33} height={33} alt="pic" />
+                </Link>
+              </div>
             </Card>
           </div>
 
@@ -82,27 +95,33 @@ const Contact = () => {
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Filipe Forssblad
               </h5>
+              <div>
+                <p className="font-semibold text-gray-700 dark:text-gray-400 font-">
+                  Java Fullstack Developer
+                </p>
+                <p className="text-sm text-gray-700 dark:text-gray-400">
+                  filipe.forssblad@salt.dev
+                </p>
+              </div>
               <p>
                 {' '}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit qui et aliquid vel soluta eum veniam.
-                Consequatur nam recusandae magni reiciendis,
-                minus sed quas repudiandae ad aspernatur repellat perspiciatis saepe.
+                I’m a Portuguese-Swede living in Stockholm,
+                passionate about learning and solving complex
+                problems. Coding is the realized outlet
+                of these passions.
+                <br />
+                I am cheerful and proactive, comfortable working
+                alone and in teams under a tight schedule.
                 {' '}
               </p>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
-                Java Fullstack Developer
-                {' '}
-                <br />
-                Filipe.Forssblad@appliedtechnology.se
-                <Link href="https://www.linkedin.com/in/arielshaka"> Filipes LinkedIn</Link>
-                {' '}
-                <br />
-                <Link href="https://github.com/ArielShaka">Fil Github</Link>
-                {' '}
-                <br />
-                And he loves titties.
-              </p>
+              <div className={styles.logoLinks}>
+                <Link href="https://www.linkedin.com/in/filipera88/">
+                  <Image src="/linkedln.png" width={40} height={40} alt="pic" />
+                </Link>
+                <Link href="https://github.com/FilipeRA">
+                  <Image src="/GitHub-Mark-120px-plus.png" width={33} height={33} alt="pic" />
+                </Link>
+              </div>
             </Card>
           </div>
         </div>

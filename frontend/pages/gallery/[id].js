@@ -5,7 +5,9 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { signIn, useSession, signOut } from 'next-auth/react';
+import {
+  signIn, useSession, signOut,
+} from 'next-auth/react';
 import {
   Button, Card, Navbar, Dropdown, Avatar, Rating,
 } from 'flowbite-react';
@@ -49,6 +51,7 @@ const Details = ({ professionals }) => {
       const serviceHistory = {
         userName: session.user.name,
         userEmail: session.user.email,
+        userImage: session.user.image,
         professionalId: professionals.id,
         professionalName: professionals.professionalName,
         professionalService: professionals.professionalService,
@@ -100,8 +103,6 @@ const Details = ({ professionals }) => {
                 </p>
                 <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
               </Rating>
-              {/* <Image src="/star.png" width={20} height={20} alt="star rating" />
-              {professionals.professionalRating} */}
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400">
               {professionals.professionalPrice}
@@ -114,23 +115,6 @@ const Details = ({ professionals }) => {
               </Button>
             </div>
           </div>
-
-          {/* <div className="mb-4 items-center justify-between">
-            <h1>Image</h1>
-            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">{professionals.professionalName}</h5>
-            <h5>{professionals.professionalAddress}</h5>
-            <h5>{professionals.professionalRating}</h5>
-            <h5>
-              {professionals.professionalPrice}
-              {' '}
-              kr SEK
-            </h5>
-          </div> */}
-          {/* <div className="flex flex-wrap items-center gap-2">
-            <Button onClick={handleSubmit}>
-              Hire
-            </Button>
-          </div> */}
           <div className="mb-4 flex items-center justify-between">
             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
               Latest Services
@@ -144,7 +128,8 @@ const Details = ({ professionals }) => {
                     <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                        // src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                        src={history.userImage}
                         alt="Neil image" />
                     </div>
                     <div className="min-w-0 flex-1">
