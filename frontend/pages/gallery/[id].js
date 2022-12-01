@@ -17,33 +17,19 @@ import styles from '../../styles/Details.module.css';
 import navStyles from '../../styles/Navbar.module.css';
 import Footer from '../../components/Footer';
 
-// eslint-disable-next-line max-len
-// The reason for doing this get static path props function is to first tell next how many html pages needs to be made based on our data.
-export const getStaticPaths = async () => {
-  const response = await fetch('http://localhost:8080/api/professionals');
-  const data = await response.json(); // data is an array of objects
-  const paths = data.map(pro => ({
-    params: { id: pro.id.toString() }, // return an object from this array
-  }));
-  return {
-    paths, // now we telling next.js what to build using this paths
-    fallback: false,
-  };
-};
-
-// eslint-disable-next-line max-len
-export const getStaticProps = async context => { // if there are 10 paths, this function will run 10 times
-  const { id } = context.params;
-  const response = await fetch(`http://localhost:8080/api/professionals/${id}`);
-  const data = await response.json();
-  return {
-    props: { professionals: data },
-  };
-};
-
-const Details = ({ professionals }) => {
+const Details = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  const [professionals, setProfessionals] = React.useState(null);
+
+  React.useEffect(() => {
+    const { id } = router.query;
+    if (!id) return;
+    fetch(`https://safe-hire-me.azurewebsites.net/api/professionals/${id}`)
+      .then(res => res.json())
+      .then(data => setProfessionals(data))
+      .catch(error => console.log(error));
+  }, [router]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -59,7 +45,7 @@ const Details = ({ professionals }) => {
         professionalImage: professionals.professionalImage,
       };
 
-      fetch(`http://localhost:8080/api/users/${session.user.email}`, {
+      fetch(`https://safe-hire-me.azurewebsites.net/api/users/${session.user.email}`, {
         method: 'PATCH',
         mode: 'cors',
         body: JSON.stringify(serviceHistory),
@@ -73,6 +59,16 @@ const Details = ({ professionals }) => {
       signIn();
     }
   };
+  if (!professionals) {
+    return (
+      <div className={styles.container}>
+        <Head>
+          <title>Loading</title>
+        </Head>
+        <div className={styles.loader} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -83,7 +79,7 @@ const Details = ({ professionals }) => {
           {professionals.professionalName}
         </title>
         <meta name="keywords" content="professional" />
-        <link rel="icon" href="/HireMeHead.png" />
+        <link rel="icon" href="/HireMeHeadNew-light.png" />
       </Head>
       <main className={styles.specificPro}>
         <Card className={styles.latestCustomers}>
@@ -93,7 +89,15 @@ const Details = ({ professionals }) => {
               {professionals.professionalName}
             </h5>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {`${professionals.professionalAddress.split(' ')[0]}, ${professionals.professionalAddress.split(' ')[professionals.professionalAddress.split(' ').length - 1]}`}
+              {professionals.professionalService}
+            </span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {`${professionals.professionalAddress.split(' ')[professionals.professionalAddress.split(' ').length - 1]}`}
+            </span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {professionals.professionalPrice}
+              {' '}
+              kr / hour
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400 flex">
               <Rating>
@@ -103,11 +107,6 @@ const Details = ({ professionals }) => {
                 </p>
                 <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
               </Rating>
-            </span>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {professionals.professionalPrice}
-              {' '}
-              SEK / hour
             </span>
             <div className="mt-4 flex space-x-3 lg:mt-6">
               <Button onClick={handleSubmit}>
@@ -128,7 +127,6 @@ const Details = ({ professionals }) => {
                     <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
-                        // src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
                         src={history.userImage}
                         alt="Neil image" />
                     </div>

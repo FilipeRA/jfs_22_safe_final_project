@@ -1,24 +1,3 @@
-.mainContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-}
-
-.contact {
-  max-width: 350px;
-  min-height: 450px;
-  /* margin: 20px 20px 20px 20px; */
-  margin: 10px;
-  margin-top: 20px;
-  justify-content: center;
-}
-
-.contactMain {
-  background-color: white;
-  height: 265vh;
-}
-
 .logoLinks {
   display: flex;
   flex-direction: row;
@@ -37,20 +16,59 @@
   transform: scale(0.93);
 }
 
+.contactMain {
+  width: 100%;
+  background-color: white;
+}
+
+.contactContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: white;
+}
+
+.contact {
+  grid-column: 1 / 2;
+  display: grid;
+  margin: 20px 10px 0px 10px;
+  max-height: 100vh;
+  overflow: auto;
+  align-items: start;
+}
+
 @media screen and (min-width: 480px) {
   .contactMain {
-    height: 265vh;
+    height: 100vh;
+  }
+
+  .contactContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  .contact {
+    grid-column: span 1;
+    display: grid;
+    align-items: start;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .contactMain {
-    height: 100vh;
+@media screen and (min-width: 870px) {
+  .contactContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1%;
+    max-width: 80%;
   }
-}
 
-@media screen and (min-width: 1024px) {
-  .contactMain {
-    height: 100vh;
+  .contact {
+    max-width: auto;
   }
 }

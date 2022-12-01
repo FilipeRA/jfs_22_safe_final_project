@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signIn, useSession, signOut } from 'next-auth/react';
+
 import Image from 'next/image';
 import {
   Dropdown, Avatar, TextInput, Button, Navbar,
 } from 'flowbite-react';
-import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+import {
+  useJsApiLoader, Autocomplete,
+} from '@react-google-maps/api';
 import styles from '../styles/Navbar.module.css';
 
 const NavBar = () => {
@@ -22,12 +25,14 @@ const NavBar = () => {
   const [isLoading, setLoading] = useState(false);
   const [service, setService] = useState('');
   const [location, setLocation] = useState('');
+  const [locationAuto, setLocationAuto] = useState('');
+  const [searchResult, setSearchResult] = useState('');
   const services = [];
   const router = useRouter();
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:8080/api/professionals')
+    fetch('https://safe-hire-me.azurewebsites.net/api/professionals')
       .then(response => response.json())
       .then(result => {
         setData(result);
@@ -57,7 +62,17 @@ const NavBar = () => {
     e.preventDefault();
     setService('');
     setLocation('');
-    router.push(`/gallery?location=${location}&service=${service}`);
+    router.push(`/gallery?location=${locationAuto || location}&service=${service}`);
+  };
+
+  const onLoad = autocomplete => {
+    setSearchResult(autocomplete);
+  };
+
+  const onPlaceChanged = () => {
+    if (searchResult != null) {
+      setLocationAuto(searchResult.getPlace().formatted_address);
+    }
   };
 
   if (!isLoaded) { return <div> Loading.... </div>; }
@@ -70,7 +85,7 @@ const NavBar = () => {
 
       <div className={styles.navlogo}>
         <Link href="/">
-          <Image src="/HireMeLogo.png" width={120} height={120} alt="hire me logo" />
+          <Image src="/HireMeNew.png" width={120} height={120} alt="hire me logo" />
         </Link>
       </div>
 
@@ -94,7 +109,10 @@ const NavBar = () => {
             </datalist>
           </div>
           <div>
-            <Autocomplete>
+            <Autocomplete
+              onPlaceChanged={onPlaceChanged}
+              onLoad={onLoad}
+              restrictions={{ country: ['se'] }}>
               <TextInput
                 type="text"
                 placeholder="Location"
@@ -147,7 +165,11 @@ const NavBar = () => {
               </Dropdown>
               <Navbar.Toggle />
             </div>
-          ) : <Link href="/login" onClick={() => signIn()}>Login</Link>}
+          ) : (
+            <Navbar.Link>
+              <Link href="/login" onClick={() => signIn()}>Login</Link>
+            </Navbar.Link>
+          )}
         </div>
       </div>
 

@@ -62,18 +62,6 @@ const Map = ({ professionals, inputLocation }) => {
 
       {coords.map((coord, i) => (
         <>
-          {/* <Marker
-            key={professionals[i].id}
-          // onClick={() => showDetails(coord)}
-          // icon="/label.png"
-            className={styles.markerStyle}
-            label={{
-              text: `${professionals[i].professionalPrice.toString()} kr SEK`,
-              color: 'pink',
-              fontSize: '15px',
-              fontWeight: 'bold',
-            }}
-            position={coord} /> */}
           <Link key={professionals[i].id} href={`/gallery/${professionals[i].id}`}>
             <InfoWindow
               // key={professionals[i].id}

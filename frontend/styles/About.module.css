@@ -1,7 +1,7 @@
 .about {
-  height: 150vh;
+  height: 80vh;
   background-color: white;
-  padding: 20px 4rem;
+  padding: 20px 2rem;
 }
 
 .aboutContainer {
@@ -18,4 +18,36 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (min-width: 480px) {
+  .about {
+    height: 80vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about {
+    height: 100vh;
+  }
+  .aboutContainer {
+    /* max-width: 600px; */
+    max-width: 50%;
+    height: 80%;
+  }
+  .aboutContainer h1 {
+    font-size: 4rem;
+    padding-bottom: 40px;
+  }
+  .aboutContainer h2 {
+    font-size: 4rem;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+  .aboutContainer li {
+    font-size: 1.7rem;
+  }
+  .techStack > img {
+    width: 60px !important;
+  }
 }

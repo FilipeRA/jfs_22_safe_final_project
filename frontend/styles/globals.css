@@ -20,11 +20,7 @@ a {
   box-sizing: border-box;
 }
 
-
 @media (prefers-color-scheme: dark) {
-  /* html {
-    color-scheme: dark;
-  } */
   body {
     color: #040f16;
     background: #fbfbff;
@@ -37,7 +33,6 @@ a {
 
 .submitBtn {
   color: #fbfbff;
-  /* background-color: #0b4f6c; */
 }
 
 .footer-container {

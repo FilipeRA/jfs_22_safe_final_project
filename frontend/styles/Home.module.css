@@ -7,8 +7,8 @@
   justify-content: flex-start;
   align-items: center;
   background-color: white;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .companyName {
@@ -47,6 +47,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  font-size: 8vw;
 }
 
 .title,
@@ -55,9 +56,11 @@
 }
 
 .description {
-  margin: 2rem 0;
+  /* margin: 1rem 0; */
   line-height: 1.5;
   font-size: 1.5rem;
+  font-size: 4vw;
+  margin-top: 0.5rem;
 }
 
 .code {
@@ -121,13 +124,23 @@
 
 @media (prefers-color-scheme: dark) {
   .card,
-  /* .footer {
-    border-color: #222;
-  } */
   .code {
     background: #111;
   }
   .logo img {
     filter: invert(1);
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding-top: 100px !important;
+    height: 5vh !important;
+  }
+  .title {
+    font-size: 4rem;
+  }
+  .description {
+    font-size: 1.5rem;
   }
 }
